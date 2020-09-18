@@ -1,27 +1,27 @@
-export const fetchGMNotebooksSuccess = (GMNotebooks) => {
+export const fetchGMNotebooksSuccess = (gmNotebooks) => {
     return {
         type: 'FETCH_GMNOTEBOOKS_SUCCESS',
-        GMNotebooks 
+        gmNotebooks 
     }
 }
 
-export const addGMNotebook = (newGMNotebook) => {
+export const addGMNotebook = (newgmNotebook) => {
     return {
         type: 'ADD_GMNOTEBOOK',
-        newGMNotebook
+        newgmNotebook
     }
 }
 
-export const deleteGMNotebook = (GMNotebookId) => {
+export const deleteGMNotebook = (gmNotebookId) => {
     return {
         type: 'DELETE_GMNOTEBOOK',
-        GMNotebookId
+        gmNotebookId
     }
 }
 
-export const updateGMNotebook = (GMNotebook) => {
+export const updateGMNotebook = (gmNotebook) => {
     return {
         type: 'UPDATE_GMNOTEBOOK',
-        GMNotebook
+        gmNotebook
     }
 }

@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { fetchGMNotebooksSuccess } from '../actions/index';
 import { deleteGMNotebook } from '../actions/index';
 import {connect} from 'react-redux'
-import GMNotebook from './GMNotebook'
+import GMNotebookCard from './GMNotebookCard'
+import { Link } from "react-router-dom";
+
 
 
 class GMNotebooksContainer extends Component {
@@ -10,21 +12,20 @@ class GMNotebooksContainer extends Component {
   componentDidMount(){
     fetch('http://localhost:4000/game_master_notebooks')
     .then(resp => resp.json())
-    .then(notebooksArr => {
+    .then(gmNotebooks => {
 
-    this.props.fetchGMNotebooksSuccess(notebooksArr)
+    this.props.fetchGMNotebooksSuccess(gmNotebooks)
     })
   }
 
   renderGMNotebooks = () => {
       console.log(this.props)
-    // return this.props.notebooks.map(notebook => (
-    //   <GMNotebook
-    //     key={notebook.id}
-    //     note={notebook}
-    //     deleteGMNotebook={this.props.deleteGMNotebook}
-    //   />
-    // ));
+    return this.props.gmNotebooks.map(notebook => (
+        <GMNotebookCard 
+        key={notebook.id}
+        gmNotebook={notebook}
+        />
+    ));
   }
   
 
@@ -32,6 +33,7 @@ class GMNotebooksContainer extends Component {
   return (
     <div>
         <h1>buncha notes</h1>
+        <button as={Link} to={`/game_master_notebooks`}>View All</button>
         <div className="ui items">{this.renderGMNotebooks()}</div>
     </div>
   );}
@@ -39,7 +41,7 @@ class GMNotebooksContainer extends Component {
 
 const mapStateToProps= (storeState) => {
   return {
-    GMNotebooks: storeState.GMNotebooks,
+    gmNotebooks: storeState.gmNotebooks,
   }
 }
 
