@@ -1,13 +1,13 @@
-export const loginSuccess = (email) => {
-    return {
-      type: "LOGIN_SUCCESS",
-      email: email
-    }
+export const loginSuccess = (user) => {
+  return {
+    type: "LOGIN_SUCCESS",
+    user: user
   }
-  
-  
-  export const logoutSuccess = () => {
-    return {
-      type: 'LOGOUT_SUCCESS'
-    }
+}
+
+
+export const logoutSuccess = () => {
+  return {
+    type: 'LOGOUT_SUCCESS'
   }
+}

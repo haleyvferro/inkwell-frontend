@@ -6,9 +6,8 @@ class Login extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      email: 'haleyvferro@gmail.com',
+      username: 'haleyvferro',
       password: 'password',
-    //   error: null
     }
   }
 
@@ -40,14 +39,6 @@ class Login extends React.Component {
         this.props.history.push('/dashboard')
       }
     })
-    
-    
-    // send over login cred to the backend
-    //
-    // once it comes back:
-    //    if it's successful:
-    //       1. store the authenticated user in our redux store
-    //       2. redirect to the dashboard page
   }
 
   render(){
@@ -56,8 +47,8 @@ class Login extends React.Component {
         <h3>Sign in</h3>
         {this.state.error ? <h6>{this.state.error}</h6> : null}
         <form onSubmit={this.handleSubmit}>
-          <label>email:</label>
-          <input name={'email'} onChange={this.handleInputChange} value={this.state.email} />
+          <label>username:</label>
+          <input name={'username'} onChange={this.handleInputChange} value={this.state.username} />
           <br/>
           <br/>
           <label>password:</label>
