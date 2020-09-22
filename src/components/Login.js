@@ -8,6 +8,7 @@ class Login extends React.Component {
     this.state = {
       username: 'haleyvferro',
       password: 'password',
+      error: null
     }
   }
 
@@ -35,6 +36,8 @@ class Login extends React.Component {
           error: data.error
         })
       } else {
+        localStorage.setItem('myAppToken', data.token)
+        console.log(data)
         this.props.loginSuccess(data)
         this.props.history.push('/dashboard')
       }

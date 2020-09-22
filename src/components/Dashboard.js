@@ -3,12 +3,30 @@ import React  from 'react';
 import { Route, Switch } from 'react-router-dom';
 import GMNotebooksContainer from './GMNotebooksContainer';
 import { connect } from 'react-redux'
-
+import {currentUser} from '../actions/Auth'
 
 class Dashboard extends React.Component {
   componentDidMount(){
-    if(!this.props.auth){
+    const token = localStorage.getItem('myAppToken')
+    if(!token){
       this.props.history.push('/login')
+    } else {
+      const reqObj = {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      }
+
+      fetch('http://localhost:4000/api/v1/current_user', reqObj)
+      .then(resp => resp.json())
+      .then(data => {
+        if (data.error){
+          this.props.history.push('/login')
+        } else {
+          this.props.currentUser(data)
+        }
+      })
     }
   }
   
@@ -26,4 +44,8 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, null)(Dashboard);
+const mapDispatchToProps = {
+  currentUser
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

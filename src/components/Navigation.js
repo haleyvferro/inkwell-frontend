@@ -4,6 +4,12 @@ import {connect} from 'react-redux';
 import { logoutSuccess } from '../actions/Auth';
 
 class Navigation extends React.Component {
+
+  handleLogout = () => {
+    localStorage.removeItem('myAppToken')
+    this.props.logoutSuccess()
+  }
+
   render() {
     return (
       <div className={`ui borderless inverted menu`}>
@@ -19,7 +25,7 @@ class Navigation extends React.Component {
           </NavLink> */}
           {
             this.props.auth ? 
-          <NavLink to='/login' className="item">
+          <NavLink to='/login' className="item" onClick={this.handleLogout}>
             Logout
           </NavLink>
           :

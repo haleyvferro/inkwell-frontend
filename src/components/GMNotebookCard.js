@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 class GMNotebookCard extends Component {
 
 render () {
-  console.log(this.props.gmNotebook)
   return (
     <div className="ui item">
       <div>

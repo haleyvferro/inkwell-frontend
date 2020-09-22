@@ -19,7 +19,6 @@ class GMNotebooksContainer extends Component {
   }
 
   renderGMNotebooks = () => {
-      console.log(this.props)
     return this.props.gmNotebooks.map(notebook => (
         <GMNotebookCard 
         key={notebook.id}
