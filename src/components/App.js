@@ -4,7 +4,8 @@ import { Route, Switch } from 'react-router-dom';
 import Navigation from './Navigation'
 import Login from './Login'
 import Dashboard from './Dashboard'
-import GameShow from './GameShow'
+// import GameShow from './GameShow'
+import GMNotebookShow from './GMNotebookShow'
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
       <Switch>
         <Route path='/dashboard' component={Dashboard}/>
         <Route path='/login' component={Login}/>
-        <Route path='/games/:id' component={GameShow}/>
+        <Route path='/gameMasterNotebooks/:id' component={GMNotebookShow}/>
       </Switch>
     </div>
   );

@@ -1,28 +1,29 @@
 import React, { Component } from 'react';
-import { fetchGMNotebooksSuccess } from '../actions/index';
-import { deleteGMNotebook } from '../actions/index';
+// import { fetchGMNotebooksSuccess } from '../actions/index';
+// import { deleteGMNotebook } from '../actions/index';
 import {connect} from 'react-redux'
 import GMNotebookCard from './GMNotebookCard'
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 
 
 class GMNotebooksContainer extends Component {
 
   componentDidMount(){
-    // console.log(this.props.id)
-    fetch('http://localhost:4000/game_master_notebooks')
-    .then(resp => resp.json())
-    .then(gmNotebooks => {
-      const filteredNotebooks = gmNotebooks.filter(notebook => notebook.user_id === this.props.id)
-    this.props.fetchGMNotebooksSuccess(filteredNotebooks)
-    })
+    // // console.log(this.props.id)
+    // fetch('http://localhost:4000/game_master_notebooks')
+    // .then(resp => resp.json())
+    // .then(gmNotebooks => {
+    //   const filteredNotebooks = gmNotebooks.filter(notebook => notebook.user_id === this.props.id)
+    // this.props.fetchGMNotebooksSuccess(filteredNotebooks)
+    // })
   }
 
   renderGMNotebooks = () => {
-    return this.props.gmNotebooks.map(notebook => (
+    const gmnotebooks = this.props.auth.game_master_notebooks
+    return gmnotebooks.map(notebook => (
         <GMNotebookCard 
-        key={notebook.id}
+        key={notebook.id} 
         gmNotebook={notebook}
         />
     ));
@@ -39,15 +40,16 @@ class GMNotebooksContainer extends Component {
   );}
 }
 
-const mapStateToProps= (storeState) => {
+const mapStateToProps= (state) => {
   return {
-    gmNotebooks: storeState.gmNotebooks,
+    auth: state.auth,
   }
 }
 
-const mapDispatchToProps = {
-    fetchGMNotebooksSuccess,
-    deleteGMNotebook,
-}
+export default connect(mapStateToProps, null)(GMNotebooksContainer)
 
-export default connect(mapStateToProps, mapDispatchToProps)(GMNotebooksContainer)
+
+// const mapDispatchToProps = {
+//     fetchGMNotebooksSuccess,
+//     deleteGMNotebook,
+// }

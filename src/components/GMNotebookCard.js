@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Link } from "react-router-dom";
-// import Game from './Game'
-
+import {connect} from 'react-redux'
+// import GMNotebookShow from './GMNotebookShow'
 
 class GMNotebookCard extends Component {
 
@@ -14,4 +14,11 @@ render () {
     </div>
   );
 };}
-export default GMNotebookCard;
+
+const mapStateToProps= (state) => {
+  return {
+    auth: state.auth,
+  }
+}
+
+export default connect(mapStateToProps, null)(GMNotebookCard)
