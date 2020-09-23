@@ -21,7 +21,7 @@ class GMNotebookShow extends Component {
     renderGMNotes = () => {
         const gmNotes = this.state.gmNotes
         if (gmNotes) {
-        console.log(gmNotes)
+        // console.log(gmNotes)
         return gmNotes.map(note => (
             <GMNoteCard 
             gmNotebookName={this.state.gmNotebook.name}
@@ -37,10 +37,11 @@ class GMNotebookShow extends Component {
         // const gmNotes = gmNotebook.gm_notes
     return (
         <div className="ui item">
-            <h1>{this.state.gmNotebook.name}</h1>
-        <div>
-            {this.renderGMNotes()}
-        </div>
+          <h1>{this.state.gmNotebook.name}</h1>
+          <div>
+              {this.renderGMNotes()}
+              <button>New Note</button>
+          </div>
         </div>
     );
     };
