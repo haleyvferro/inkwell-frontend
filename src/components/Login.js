@@ -36,8 +36,7 @@ class Login extends React.Component {
           error: data.error
         })
       } else {
-        localStorage.setItem('myAppToken', data.token)
-        console.log(data)
+        localStorage.setItem('myAppToken', data.token )
         this.props.loginSuccess(data)
         this.props.history.push('/dashboard')
       }

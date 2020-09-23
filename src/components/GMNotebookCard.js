@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Link } from "react-router-dom";
+// import Game from './Game'
 
 
 class GMNotebookCard extends Component {
@@ -8,7 +9,7 @@ render () {
   return (
     <div className="ui item">
       <div>
-        <h3>{this.props.gmNotebook.name}</h3>
+          <Link to={'/gameMasterNotebooks/'+this.props.gmNotebook.id.toString()}>{this.props.gmNotebook.name}</Link>
       </div>
     </div>
   );

@@ -10,11 +10,12 @@ import { Link } from "react-router-dom";
 class GMNotebooksContainer extends Component {
 
   componentDidMount(){
+    // console.log(this.props.id)
     fetch('http://localhost:4000/game_master_notebooks')
     .then(resp => resp.json())
     .then(gmNotebooks => {
-
-    this.props.fetchGMNotebooksSuccess(gmNotebooks)
+      const filteredNotebooks = gmNotebooks.filter(notebook => notebook.user_id === this.props.id)
+    this.props.fetchGMNotebooksSuccess(filteredNotebooks)
     })
   }
 
@@ -31,8 +32,8 @@ class GMNotebooksContainer extends Component {
   render(){
   return (
     <div>
-        <h1>buncha notes</h1>
-        <button as={Link} to={`/game_master_notebooks`}>View All</button>
+        <h1>buncha notebooks for the games I'm running</h1>
+        {/* <button as={Link} to={`/game_master_notebooks`}>View All</button> */}
         <div className="ui items">{this.renderGMNotebooks()}</div>
     </div>
   );}

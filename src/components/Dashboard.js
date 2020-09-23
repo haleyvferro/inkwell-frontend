@@ -2,10 +2,13 @@ import React  from 'react';
 // import './App.css';
 import { Route, Switch } from 'react-router-dom';
 import GMNotebooksContainer from './GMNotebooksContainer';
+import GamesRunningContainer from './GamesRunningContainer';
 import { connect } from 'react-redux'
 import {currentUser} from '../actions/Auth'
 
 class Dashboard extends React.Component {
+
+
   componentDidMount(){
     const token = localStorage.getItem('myAppToken')
     if(!token){
@@ -33,7 +36,8 @@ class Dashboard extends React.Component {
   render(){
     return (
       <div className={null}>
-          <GMNotebooksContainer />
+          <GamesRunningContainer id={this.props.auth.id} />
+          <GMNotebooksContainer id={this.props.auth.id} />
           {/* <CharacterNotebooksContainer/> */}
       </div>
   );}

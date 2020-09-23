@@ -25,3 +25,10 @@ export const updateGMNotebook = (gmNotebook) => {
         gmNotebook
     }
 }
+
+export const fetchGamesSuccess = (games) => {
+    return {
+        type: 'FETCH_GAMES_SUCCESS',
+        games 
+    }
+}
