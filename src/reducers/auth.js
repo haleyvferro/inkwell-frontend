@@ -19,6 +19,11 @@ export default function auth(state=null, action){
             gmnote_index = state.game_master_notebooks[gmnb_index].gm_notes.findIndex(note => note.id === action.id);
             state.game_master_notebooks[gmnb_index].gm_notes.splice(gmnote_index, 1)
             return state;
+        case 'EDIT_GM_NOTE':
+            gmnb_index = state.game_master_notebooks.findIndex(game_master_notebook => game_master_notebook.id === action.gmnId);
+            gmnote_index = state.game_master_notebooks[gmnb_index].gm_notes.findIndex(note => note.id === action.id);
+            state.game_master_notebooks[gmnb_index].gm_notes.splice(gmnote_index, 1, action.note)
+            return state;
     }
 }
 

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {connect} from 'react-redux'
 import {deleteGMNote} from '../actions/Auth'
 // import GMNoteCard from './GMNoteCard'
@@ -33,25 +33,26 @@ class GMNoteShow extends Component {
         this.setState({
             note: gmNote,
             gmnId: gmNotebook.id,
-            // gmnName: gmNotebook.name
+            gmnName: gmNotebookName
         })
     }
 
     render () {
         const  note = this.state.note
         // console.log(this.state.gmnId)
-        if (note) {
+        // if (this.props.location.pathname.includes("edit") === false)
+        // {
+            if (note) {
         return (
             <div>
                 
                 <h1>{note.title}</h1>
                 <p>{note.content}</p>
-                <button>Edit</button>
+                <Link to={'/'+this.state.gmnName+'/notes/'+this.state.note.id.toString()+'/edit'}>Edit</Link>
                 <button onClick={() => this.handleDelete()}>Delete</button>
             </div>
-        );} else {
-            return (null)
-        }
+        );} else { return null }
+    // } else { return }
     };
 }
 

@@ -25,3 +25,12 @@ export const deleteGMNote = (id, gmnId) => {
     gmnId: gmnId
   }
 }
+
+export const editGMNote = (id, gmnId, note) => {
+  return {
+    type: "EDIT_GM_NOTE",
+    id: id,
+    gmnId: gmnId,
+    note: note
+  }
+}
