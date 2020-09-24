@@ -36,6 +36,7 @@ class GamesRunningContainer extends Component {
         <h1>buncha games I'm running</h1>
         {/* <button as={Link} to={`/games`}>View All</button> */}
         <div className="ui items">{this.renderGames()}</div>
+        <button>Create Game</button>
     </div>
   );}
 }

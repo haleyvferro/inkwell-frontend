@@ -17,3 +17,11 @@ export const currentUser = (user) => {
     user: user
   }
 }
+
+export const deleteGMNote = (id, gmnId) => {
+  return {
+    type: "DELETE_GM_NOTE",
+    id: id,
+    gmnId: gmnId
+  }
+}

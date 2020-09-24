@@ -14,7 +14,7 @@ class Navigation extends React.Component {
     return (
       <div className={`ui borderless inverted menu`}>
         <div className="ui inverted header item">
-          <NavLink to='/'> Inkwell </NavLink>
+          <NavLink to='/dashboard'> Inkwell </NavLink>
         </div>
         <div className="right menu">
           {/* <NavLink to='/notes' className="item">

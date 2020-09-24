@@ -3,7 +3,9 @@ const initialState = {
     username: 'haleyvferro'
 }
 
-export default function auth(state=initialState, action){
+export default function auth(state=null, action){
+    let gmnb_index;
+    let gmnote_index;
     switch(action.type){
         case 'LOGIN_SUCCESS':
         case 'CURRENT_USER':
@@ -12,5 +14,19 @@ export default function auth(state=initialState, action){
             return null
         default:
             return state
+        case 'DELETE_GM_NOTE':
+            gmnb_index = state.game_master_notebooks.findIndex(game_master_notebook => game_master_notebook.id === action.gmnId);
+            gmnote_index = state.game_master_notebooks[gmnb_index].gm_notes.findIndex(note => note.id === action.id);
+            state.game_master_notebooks[gmnb_index].gm_notes.splice(gmnote_index, 1)
+            return state;
     }
 }
+
+// passing in two arguments: game notebook id and the note id
+// we're finding the notebook by it's id first 
+// go into that notebook's notes 
+// find the note with the note id
+// 
+// game_master_notebooks.gm_notes
+
+// gmnotebook = gamemasternotebooks.find
