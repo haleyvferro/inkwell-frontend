@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {connect} from 'react-redux'
 import GMNoteCard from './GMNoteCard'
 
@@ -44,7 +44,7 @@ class GMNotebookShow extends Component {
           <h1>{gmNotebook.name}</h1>
           <div>
               {this.renderGMNotes()}
-              <button>New Note</button>
+              <Link to={'/'+this.state.gmNotebook.name+'/notes/new'}>New Note</Link>
           </div>
         </div>
     );

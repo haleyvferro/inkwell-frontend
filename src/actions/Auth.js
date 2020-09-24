@@ -34,3 +34,11 @@ export const editGMNote = (id, gmnId, note) => {
     note: note
   }
 }
+
+export const newGMNote = (gmnId, note) => {
+  return {
+    type: "EDIT_GM_NOTE",
+    gmnId: gmnId,
+    note: note
+  }
+}
