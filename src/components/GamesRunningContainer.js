@@ -9,18 +9,7 @@ import GameCard from './GameCard'
 
 class GamesRunningContainer extends Component {
 
-  // componentDidMount(){
-  //   // console.log(this.props)
-  //   fetch('http://localhost:4000/games')
-  //   .then(resp => resp.json())
-  //   .then(games => {
-  //     const filteredGames = games.filter(game => game.gm_id === this.props.id)
-  //   this.props.fetchGamesSuccess(filteredGames)
-  //   })
-  // }
-
   renderGames = () => {
-    //   console.log(this.props.games)
     return this.props.games.map(game => (
         <GameCard 
         key={game.id}
@@ -28,7 +17,6 @@ class GamesRunningContainer extends Component {
         />
     ));
   }
-  
 
   render(){
   return (
@@ -46,10 +34,5 @@ const mapStateToProps= (state) => {
     auth: state.auth,
   }
 }
-
-// const mapDispatchToProps = {
-//     fetchGamesSuccess,
-//     // deleteGMNotebook,
-// }
 
 export default connect(mapStateToProps, null)(GamesRunningContainer)

@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { Link } from "react-router-dom";
 import {connect} from 'react-redux'
 import {deleteGMNote} from '../actions/Auth'
-// import GMNoteCard from './GMNoteCard'
 
 class GMNoteShow extends Component {
     state = { 
@@ -14,12 +13,10 @@ class GMNoteShow extends Component {
     handleDelete() {
         const id = this.state.note.id
         const gmnId = this.state.gmnId
-        // console.log(this.props)
         const reqObj = {
           method: 'DELETE'
         }
         fetch(`http://localhost:4000/game_master_notes/${id}`, reqObj)
-        // .then (resp => resp.json())
         this.props.deleteGMNote(id, gmnId)
         this.props.history.push(`/gameMasterNotebooks/${gmnId}`)
     }
@@ -39,9 +36,6 @@ class GMNoteShow extends Component {
 
     render () {
         const  note = this.state.note
-        // console.log(this.state.gmnId)
-        // if (this.props.location.pathname.includes("edit") === false)
-        // {
             if (note) {
         return (
             <div>
@@ -52,12 +46,10 @@ class GMNoteShow extends Component {
                 <button onClick={() => this.handleDelete()}>Delete</button>
             </div>
         );} else { return null }
-    // } else { return }
     };
 }
 
 const mapStateToProps= (state) => {
-    // console.log(state)
   return {
     auth: state.auth,
   }

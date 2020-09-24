@@ -1,6 +1,5 @@
 import React  from 'react';
 // import './App.css';
-// import { Route, Switch } from 'react-router-dom';
 import GMNotebooksContainer from './GMNotebooksContainer';
 import GamesRunningContainer from './GamesRunningContainer';
 import { connect } from 'react-redux'

@@ -9,18 +9,7 @@ import GMNotebookCard from './GMNotebookCard'
 
 class GMNotebooksContainer extends Component {
 
-  // componentDidMount(){
-    // // console.log(this.props.id)
-    // fetch('http://localhost:4000/game_master_notebooks')
-    // .then(resp => resp.json())
-    // .then(gmNotebooks => {
-    //   const filteredNotebooks = gmNotebooks.filter(notebook => notebook.user_id === this.props.id)
-    // this.props.fetchGMNotebooksSuccess(filteredNotebooks)
-    // })
-  // }
-
   renderGMNotebooks = () => {
-    // console.log(this.props.auth.game_master_notebooks)
     const gmnotebooks = this.props.auth.game_master_notebooks
     return gmnotebooks.map(notebook => (
         <GMNotebookCard 
