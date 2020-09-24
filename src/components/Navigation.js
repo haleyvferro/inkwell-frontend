@@ -17,12 +17,6 @@ class Navigation extends React.Component {
           <NavLink to='/dashboard'> Inkwell </NavLink>
         </div>
         <div className="right menu">
-          {/* <NavLink to='/notes' className="item">
-            My GM Notebooks
-          </NavLink>
-          <NavLink to='/notes' className="item">
-            My Character Notebooks
-          </NavLink> */}
           {
             this.props.auth ? 
           <NavLink to='/login' className="item" onClick={this.handleLogout}>

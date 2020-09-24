@@ -4,7 +4,11 @@ import {connect} from 'react-redux'
 import GMNoteCard from './GMNoteCard'
 
 class GMNotebookShow extends Component {
-    state = { id: "", gmNotebook: "", gmNotes: "" };
+    state = { 
+      id: "", 
+      gmNotebook: "", 
+      gmNotes: "" 
+    };
 
     componentDidMount() {
       const path = this.props.location.pathname.split("/");
@@ -37,7 +41,7 @@ class GMNotebookShow extends Component {
         // const gmNotes = gmNotebook.gm_notes
     return (
         <div className="ui item">
-          <h1>{this.state.gmNotebook.name}</h1>
+          <h1>{gmNotebook.name}</h1>
           <div>
               {this.renderGMNotes()}
               <button>New Note</button>

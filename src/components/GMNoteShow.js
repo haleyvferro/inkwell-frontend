@@ -5,7 +5,11 @@ import {deleteGMNote} from '../actions/Auth'
 // import GMNoteCard from './GMNoteCard'
 
 class GMNoteShow extends Component {
-    state = { note: "", gmnId: "", gmnName: "" }
+    state = { 
+        note: "", 
+        gmnId: "", 
+        gmnName: "", 
+    }
 
     handleDelete() {
         const id = this.state.note.id

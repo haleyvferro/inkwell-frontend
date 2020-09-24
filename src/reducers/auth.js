@@ -1,7 +1,7 @@
-const initialState = {
-    id: 1,
-    username: 'haleyvferro'
-}
+// const initialState = {
+//     id: 1,
+//     username: 'haleyvferro'
+// }
 
 export default function auth(state=null, action){
     let gmnb_index;
