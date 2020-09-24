@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Link } from "react-router-dom";
 import {connect} from 'react-redux'
-import {deleteGMNote} from '../actions/Auth'
+import {deleteGMNote} from '../../../actions/Auth'
 
 class GMNoteShow extends Component {
     state = { 

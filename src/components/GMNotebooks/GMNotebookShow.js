@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Link } from "react-router-dom";
 import {connect} from 'react-redux'
-import GMNoteCard from './GMNoteCard'
+import GMNoteCard from './GMNotes/GMNoteCard'
 
 class GMNotebookShow extends Component {
     state = { 

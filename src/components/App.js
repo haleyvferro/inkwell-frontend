@@ -5,10 +5,10 @@ import Navigation from './Navigation'
 import Login from './Login'
 import Dashboard from './Dashboard'
 // import GameShow from './GameShow'
-import GMNotebookShow from './GMNotebookShow'
-import GMNoteShow from './GMNoteShow'
-import GMNoteNew from './GMNoteNew'
-import GMNoteEdit from './GMNoteEdit'
+import GMNotebookShow from './GMNotebooks/GMNotebookShow'
+import GMNoteShow from './GMNotebooks/GMNotes/GMNoteShow'
+import GMNoteNew from './GMNotebooks/GMNotes/GMNoteNew'
+import GMNoteEdit from './GMNotebooks/GMNotes/GMNoteEdit'
 
 function App() {
   return (
