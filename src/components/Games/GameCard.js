@@ -9,7 +9,7 @@ class GameCard extends Component {
       return (
         <div className="ui item">
           <div>
-            <Link to={'/games/'+this.props.game.id.toString()}>{this.props.game.game_name}</Link>
+            <Link to={'/games/'+this.props.game.id+'/'+this.props.game.game_name}>{this.props.game.game_name}</Link>
           </div>
       </div>
       );

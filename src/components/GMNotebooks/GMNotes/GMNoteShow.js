@@ -8,6 +8,7 @@ class GMNoteShow extends Component {
         note: "", 
         gmnId: "", 
         gmnName: "", 
+        gmnUserId: "",
     }
 
     handleDelete() {
@@ -30,22 +31,37 @@ class GMNoteShow extends Component {
         this.setState({
             note: gmNote,
             gmnId: gmNotebook.id,
-            gmnName: gmNotebookName
+            gmnName: gmNotebookName,
+            gmnUserId: gmNotebook.user_id
         })
     }
 
     render () {
-        const  note = this.state.note
-            if (note) {
+        const note = this.state.note
+        const gmnUserId = this.state.gmnUserId
+        const currentUserId = this.props.auth.id
+            if (note && gmnUserId === currentUserId) {
         return (
             <div>
-                
                 <h1>{note.title}</h1>
                 <p>{note.content}</p>
                 <Link to={'/'+this.state.gmnName+'/notes/'+this.state.note.id.toString()+'/edit'}>Edit</Link>
                 <button onClick={() => this.handleDelete()}>Delete</button>
+                <br/>
+                <Link to={'/gameMasterNotebooks/'+this.state.gmnId}>Back To Notebook</Link>
             </div>
-        );} else { return null }
+        );} else if (note && gmnUserId !== currentUserId ) {
+            return (
+                <div>
+                <h1>{note.title}</h1>
+                <p>{note.content}</p>
+                <Link to={'/gameMasterNotebooks/'+this.state.gmnId}>Back To Notebook</Link>
+                {/* <Link to={'/'+this.state.gmnName+'/notes/'+this.state.note.id.toString()+'/edit'}>Edit</Link>
+                <button onClick={() => this.handleDelete()}>Delete</button> */}
+            </div>
+            )
+        }
+        else { return null }
     };
 }
 

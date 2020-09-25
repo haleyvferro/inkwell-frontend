@@ -5,30 +5,28 @@ import GMNoteCard from './GMNotes/GMNoteCard'
 
 class GMNotebookShow extends Component {
     state = { 
-      id: "", 
       gmNotebook: "", 
-      gmNotes: "" 
     };
 
     componentDidMount() {
       const path = this.props.location.pathname.split("/");
       const id = parseInt(path[path.length - 1]);
-      const gmNotebook = this.props.auth.game_master_notebooks.find(gmNotebook => gmNotebook.id === id)
-      const gmNotes = gmNotebook.gm_notes
-      this.setState({
-          id: id,
-          gmNotebook: gmNotebook,
-          gmNotes: gmNotes,
-    })
+      fetch(`http://localhost:4000/game_master_notebooks/${id}`)
+      .then(resp => resp.json())
+      .then(data => {
+        this.setState({
+            gmNotebook: data,
+        })
+      })
     }
 
     renderGMNotes = () => {
-        const gmNotes = this.state.gmNotes
+        const gmNotes = this.state.gmNotebook.game_master_notes
         if (gmNotes) {
         return gmNotes.map(note => (
             <GMNoteCard 
+            key={note.id}
             gmNotebookName={this.state.gmNotebook.name}
-            key={note.id} 
             gmNote={note}
             />
         ));}

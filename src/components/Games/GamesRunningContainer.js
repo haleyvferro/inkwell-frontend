@@ -10,7 +10,7 @@ import GameCard from './GameCard'
 class GamesRunningContainer extends Component {
 
   renderGames = () => {
-    return this.props.games.map(game => (
+    return this.props.auth.game_creations.map(game => (
         <GameCard 
         key={game.id}
         game={game}
@@ -23,7 +23,7 @@ class GamesRunningContainer extends Component {
     <div>
         <h1>buncha games I'm running</h1>
         {/* <button as={Link} to={`/games`}>View All</button> */}
-        {/* <div className="ui items">{this.renderGames()}</div> */}
+        <div className="ui items">{this.renderGames()}</div>
         <button>Create Game</button>
     </div>
   );}

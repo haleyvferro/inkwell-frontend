@@ -1,7 +1,7 @@
 import React  from 'react';
 // import './App.css';
 import GMNotebooksContainer from './GMNotebooks/GMNotebooksContainer';
-import GamesRunningContainer from './GamesRunningContainer';
+import GamesRunningContainer from './Games/GamesRunningContainer';
 import { connect } from 'react-redux'
 import {currentUser} from '../actions/Auth'
 
