@@ -10,13 +10,14 @@ class CharacterNotebookShow extends Component {
 
     componentDidMount() {
       const path = this.props.location.pathname.split("/");
-      const id = parseInt(path[path.length - 1]);
+      const name = path[2];
     if (path.includes('characterNotebooks')){
-      fetch(`http://localhost:4000/character_notebooks/${id}`)
-        .then(resp => resp.json())
-        .then(data => {
+      fetch(`http://localhost:4000/character_notebooks/`)
+      .then(resp => resp.json())
+      .then(data => {
+          const notebook = data.find(notebook => notebook.name === name)
           this.setState({
-            characterNotebook: data,
+            characterNotebook: notebook,
           })
         })
       } else if (path.includes('games')) {
@@ -26,12 +27,13 @@ class CharacterNotebookShow extends Component {
       }
     }
 
-    renderGMNotes = () => {
+    renderCharacterNotes = () => {
         const characterNotes = this.state.characterNotebook.character_notes
+        console.log(characterNotes)
         if (characterNotes) {
         return characterNotes.map(note => (
             <CharacterNoteCard 
-            key={note.id}
+            key={note.c_note_id}
             characterNotebookName={this.state.characterNotebook.name}
             characterNote={note}
             />
@@ -46,8 +48,8 @@ class CharacterNotebookShow extends Component {
             <div className="ui item">
               <h1>{characterNotebook.name}</h1>
               <div>
-                  {this.renderGMNotes()}<br/><br/>
-                  <Link to={'/'+this.state.characterNotebook.name+'/notes/new'}>New Note</Link>
+                  {this.renderCharacterNotes()}<br/><br/>
+                  <Link to={'/characterNotebooks/'+this.state.characterNotebook.name+'/notes/new'}>New Note</Link>
               </div>
             </div>
           );
@@ -56,7 +58,7 @@ class CharacterNotebookShow extends Component {
           <div className="ui item">
             <h1>{characterNotebook.name}</h1>
             <div>
-                {this.renderGMNotes()}<br/><br/>
+                {this.renderCharacterNotes()}<br/><br/>
             </div>
           </div>)
         } else {return null}

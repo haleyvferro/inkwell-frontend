@@ -14,17 +14,18 @@ class GMNoteShow extends Component {
     handleDelete() {
         const id = this.state.note.id
         const gmnId = this.state.gmnId
+        const gmnName = this.state.gmnName
         const reqObj = {
           method: 'DELETE'
         }
         fetch(`http://localhost:4000/game_master_notes/${id}`, reqObj)
         this.props.deleteGMNote(id, gmnId)
-        this.props.history.push(`/gameMasterNotebooks/${gmnId}`)
+        this.props.history.push(`/gameMasterNotebooks/${gmnName}`)
     }
 
     componentDidMount() {
         const path = this.props.location.pathname.split("/");
-        const gmNotebookName = path[1]
+        const gmNotebookName = path[2]
         const gmNoteId = parseInt(path[path.length - 1]);
         const gmNotebook = this.props.auth.game_master_notebooks.find(gmNotebook => gmNotebook.name === gmNotebookName)
         const gmNote = gmNotebook.gm_notes.find(note => note.id === gmNoteId)
@@ -45,17 +46,17 @@ class GMNoteShow extends Component {
             <div>
                 <h1>{note.title}</h1>
                 <p>{note.content}</p>
-                <Link to={'/'+this.state.gmnName+'/notes/'+this.state.note.id.toString()+'/edit'}>Edit</Link>
+                <Link to={'/gameMasterNotebooks/'+this.state.gmnName+'/notes/'+this.state.note.id.toString()+'/edit'}>Edit</Link>
                 <button onClick={() => this.handleDelete()}>Delete</button>
                 <br/>
-                <Link to={'/gameMasterNotebooks/'+this.state.gmnId}>Back To Notebook</Link>
+                <Link to={'/gameMasterNotebooks/'+this.state.gmnName}>Back To Notebook</Link>
             </div>
         );} else if (note && gmnUserId !== currentUserId ) {
             return (
                 <div>
                 <h1>{note.title}</h1>
                 <p>{note.content}</p>
-                <Link to={'/gameMasterNotebooks/'+this.state.gmnId}>Back To Notebook</Link>
+                <Link to={'/gameMasterNotebooks/'+this.state.gmnName}>Back To Notebook</Link>
                 {/* <Link to={'/'+this.state.gmnName+'/notes/'+this.state.note.id.toString()+'/edit'}>Edit</Link>
                 <button onClick={() => this.handleDelete()}>Delete</button> */}
             </div>

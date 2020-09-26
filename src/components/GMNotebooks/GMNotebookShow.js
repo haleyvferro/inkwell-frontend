@@ -10,13 +10,14 @@ class GMNotebookShow extends Component {
 
     componentDidMount() {
       const path = this.props.location.pathname.split("/");
-      const id = parseInt(path[path.length - 1]);
+      const name = path[2];
     if (path.includes('gameMasterNotebooks')){
-      fetch(`http://localhost:4000/game_master_notebooks/${id}`)
+      fetch(`http://localhost:4000/game_master_notebooks/`)
         .then(resp => resp.json())
         .then(data => {
+          const notebook = data.find(notebook => notebook.name === name)
           this.setState({
-            gmNotebook: data,
+            gmNotebook: notebook,
           })
         })
       } else if (path.includes('games')) {
@@ -47,7 +48,7 @@ class GMNotebookShow extends Component {
               <h1>{gmNotebook.name}</h1>
               <div>
                   {this.renderGMNotes()}<br/><br/>
-                  <Link to={'/'+this.state.gmNotebook.name+'/notes/new'}>New Note</Link>
+                  <Link to={'/gameMasterNotebooks/'+this.state.gmNotebook.name+'/notes/new'}>New Note</Link>
               </div>
             </div>
           );

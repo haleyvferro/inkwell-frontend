@@ -11,8 +11,8 @@ import GMNoteShow from './GMNotebooks/GMNotes/GMNoteShow'
 import GMNoteNew from './GMNotebooks/GMNotes/GMNoteNew'
 import GMNoteEdit from './GMNotebooks/GMNotes/GMNoteEdit'
 import CharacterNoteShow from './CharacterNotebooks/CharacterNotes/CharacterNoteShow'
-import CharacterNoteNew from './CharacterNotebooks/CharacterNotes/CharacterNoteNew'
-import CharacterNoteEdit from './CharacterNotebooks/CharacterNotes/CharacterNoteEdit'
+// import CharacterNoteNew from './CharacterNotebooks/CharacterNotes/CharacterNoteNew'
+// import CharacterNoteEdit from './CharacterNotebooks/CharacterNotes/CharacterNoteEdit'
 
 function App() {
   return (
@@ -25,21 +25,21 @@ function App() {
         {/* Games  */}
         <Route path='/games/:gameId/:gamename' component={GameShow}/>
 
-        {/* Game Master Notebooks */}
-        <Route path='/gameMasterNotebooks/:id' component={GMNotebookShow}/>
-
-        {/* Character Notebooks */}
-        <Route path='/characterNotebooks/:id' component={CharacterNotebookShow}/>
-
         {/* Game Master Notes */}
-        <Route path='/:gmnotebookname/notes/new' component={GMNoteNew}/>
-        <Route path='/:gmnotebookname/notes/:id/edit' component={GMNoteEdit}/>
-        <Route path='/:gmnotebookname/notes/:id' component={GMNoteShow}/>
+        <Route path='/gameMasterNotebooks/:gmnotebookname/notes/new' component={GMNoteNew}/>
+        <Route path='/gameMasterNotebooks/:gmnotebookname/notes/:id/edit' component={GMNoteEdit}/>
+        <Route path='/gameMasterNotebooks/:gmnotebookname/notes/:id' component={GMNoteShow}/>
+
+        {/* Game Master Notebooks */}
+        <Route path='/gameMasterNotebooks/:gmnotebookname' component={GMNotebookShow}/>
 
         {/* Character Notes */}
-        <Route path='/:characternotebookname/notes/new' component={CharacterNoteNew}/>
-        <Route path='/:characternotebookname/notes/:id/edit' component={CharacterNoteEdit}/>
-        <Route path='/:characternotebookname/notes/:id' component={CharacterNoteShow}/>
+        {/* <Route path='/characterNotebooks/:characternotebookname/notes/new' component={CharacterNoteNew}/> */}
+        {/* <Route path='/characterNotebooks/:characternotebookname/notes/:id/edit' component={CharacterNoteEdit}/> */}
+        <Route path='/characterNotebooks/:characternotebookname/notes/:id' component={CharacterNoteShow}/>
+
+        {/* Character Notebooks */}
+        <Route path='/characterNotebooks/:characternotebookname' component={CharacterNotebookShow}/>
       </Switch>
     </div>
   );

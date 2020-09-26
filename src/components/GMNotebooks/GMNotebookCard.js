@@ -9,7 +9,7 @@ render () {
   return (
     <div className="ui item">
       <div>
-          <Link to={'/gameMasterNotebooks/'+this.props.gmNotebook.id}>{this.props.gmNotebook.name}</Link>
+          <Link to={'/gameMasterNotebooks/'+this.props.gmNotebook.name}>{this.props.gmNotebook.name}</Link>
       </div>
     </div>
   );

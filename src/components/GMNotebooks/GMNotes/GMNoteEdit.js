@@ -15,7 +15,7 @@ class GMNoteEdit extends Component {
 
     componentDidMount() {
         const path = this.props.location.pathname.split("/");
-        const gmNotebookName = path[1]
+        const gmNotebookName = path[2]
         const gmNoteId = parseInt(path[path.length - 2]);
         const gmNotebook = this.props.auth.game_master_notebooks.find(gmNotebook => gmNotebook.name === gmNotebookName)
         const gmNote = gmNotebook.gm_notes.find(note => note.id === gmNoteId)
@@ -54,7 +54,7 @@ class GMNoteEdit extends Component {
           .then(data => {
               console.log(data)
               this.props.editGMNote(id, gmnId, data)
-              this.props.history.push('/'+this.state.gmnName+'/notes/'+id.toString())
+              this.props.history.push('/gameMasterNotebooks/'+this.state.gmnName+'/notes/'+id.toString())
           })
     }
 
