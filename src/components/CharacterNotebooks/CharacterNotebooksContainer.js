@@ -12,21 +12,25 @@ class CharacterNotebooksContainer extends Component {
   renderCharacterNotebooks = () => {
     const path = this.props.location.pathname.split("/");
       if (path.includes('games')) {
-          const cnotebooks = this.props.characterNotebooks
-          return cnotebooks.map(notebook => (
-              <CharacterNotebookCard 
-              key={notebook.id} 
-              characterNotebook={notebook}
-              />
-          ));
+        const cnotebooks = this.props.characterNotebooks
+        return cnotebooks.map(notebook => (
+            <CharacterNotebookCard 
+            gameName={this.props.gameName}
+            gameId={this.props.gameId}
+            key={notebook.id} 
+            characterNotebook={notebook}
+            />
+            ));
       } else if ('hi'){
-          const cnotebooks = this.props.auth.game_master_notebooks
-          return cnotebooks.map(notebook => (
-              <CharacterNotebookCard 
-              key={notebook.id} 
-              gmNotebook={notebook}
-              />
-          ));
+        const cnotebooks = this.props.auth.game_master_notebooks
+        return cnotebooks.map(notebook => (
+          <CharacterNotebookCard 
+          gameName={this.props.gameName}
+          gameId={this.props.gameId}
+          key={notebook.id} 
+          gmNotebook={notebook}
+          />
+        ));
       }
   }
   

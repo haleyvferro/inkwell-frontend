@@ -38,6 +38,7 @@ class GMNoteShow extends Component {
     }
 
     render () {
+        console.log(this.state)
         const note = this.state.note
         const gmnUserId = this.state.gmnUserId
         const currentUserId = this.props.auth.id

@@ -33,12 +33,16 @@ class GameShow extends Component {
             <div>
               <h1>{this.state.game.game_name}</h1>
               <GMNotebookShow 
+              gameName={this.state.game.game_name}
+              gameId={this.state.game.id}
               location={this.props.location}
               gmNotebook={this.state.game.game_master_notebook}
               /> 
             </div>
             <div>
               <CharacterNotebooksContainer 
+              gameName={this.state.game.game_name}
+              gameId={this.state.game.id}
               location={this.props.location}
               characterNotebooks={this.state.game.character_notebooks}
               />

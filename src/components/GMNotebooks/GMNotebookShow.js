@@ -6,7 +6,20 @@ import GMNoteCard from './GMNotes/GMNoteCard'
 class GMNotebookShow extends Component {
     state = { 
       gmNotebook: "", 
+      gameId: "",
+      gameName: "",
     };
+
+    findGameName = (gameId) => {
+      fetch(`http://localhost:4000/games/${gameId}`)
+      .then(resp => resp.json())
+      .then(data => {
+          const gameName = data.game_name
+          this.setState({
+            gameName: gameName,
+          })
+        })
+    }
 
     componentDidMount() {
       const path = this.props.location.pathname.split("/");
@@ -18,9 +31,12 @@ class GMNotebookShow extends Component {
           const notebook = data.find(notebook => notebook.name === name)
           this.setState({
             gmNotebook: notebook,
+            gameId: notebook.game_id,
           })
+          this.findGameName(notebook.game_id)
         })
-      } else if (path.includes('games')) {
+      } 
+      else if (path.includes('games')) {
         this.setState({
           gmNotebook: this.props.gmNotebook
         })
@@ -40,6 +56,7 @@ class GMNotebookShow extends Component {
       }
 
     render () {
+      console.log(this.state)
         const gmNotebook = this.state.gmNotebook
         const currentUserId = this.props.auth.id
         if (gmNotebook && gmNotebook.user_id === currentUserId){
@@ -48,16 +65,19 @@ class GMNotebookShow extends Component {
               <h1>{gmNotebook.name}</h1>
               <div>
                   {this.renderGMNotes()}<br/><br/>
-                  <Link to={'/gameMasterNotebooks/'+this.state.gmNotebook.name+'/notes/new'}>New Note</Link>
+                  <Link to={'/gameMasterNotebooks/'+this.state.gmNotebook.name+'/notes/new'}>New Note</Link><br/>
+                  <Link to={'/games/'+this.state.gameId+'/'+this.state.gameName}>View Game</Link>
+
               </div>
             </div>
           );
         } else if (gmNotebook && gmNotebook.user_id !== currentUserId ){
           return(
-          <div className="ui item">
+            <div className="ui item">
             <h1>{gmNotebook.name}</h1>
             <div>
                 {this.renderGMNotes()}<br/><br/>
+            <Link to={'/games/'+this.state.gameId+'/'+this.state.gameName}>View Game</Link>
             </div>
           </div>)
         } else {return null}

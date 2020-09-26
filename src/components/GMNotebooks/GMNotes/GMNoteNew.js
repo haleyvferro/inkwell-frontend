@@ -61,7 +61,7 @@ class GMNoteNew extends Component {
         return (
             <div>
                 <form onSubmit={this.submitHandler} className="ui form">
-        <h1>Edit your note</h1>
+        <h1>New Note</h1>
             Title:
             <br/>
             <input
