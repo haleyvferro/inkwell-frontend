@@ -35,7 +35,9 @@ class Dashboard extends React.Component {
   render(){
     return (
       <div className={null}>
+          <h1>buncha notebooks for the games I'm running</h1>
           <GamesRunningContainer id={this.props.auth.id} />
+          <h1>buncha notebooks for the games I'm running</h1>
           <GMNotebooksContainer id={this.props.auth.id} />
           {/* <CharacterNotebooksContainer/> */}
       </div>

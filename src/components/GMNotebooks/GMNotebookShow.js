@@ -11,13 +11,19 @@ class GMNotebookShow extends Component {
     componentDidMount() {
       const path = this.props.location.pathname.split("/");
       const id = parseInt(path[path.length - 1]);
+    if (path.includes('gameMasterNotebooks')){
       fetch(`http://localhost:4000/game_master_notebooks/${id}`)
-      .then(resp => resp.json())
-      .then(data => {
-        this.setState({
+        .then(resp => resp.json())
+        .then(data => {
+          this.setState({
             gmNotebook: data,
+          })
         })
-      })
+      } else if (path.includes('games')) {
+        this.setState({
+          gmNotebook: this.props.gmNotebook
+        })
+      }
     }
 
     renderGMNotes = () => {
@@ -34,15 +40,26 @@ class GMNotebookShow extends Component {
 
     render () {
         const gmNotebook = this.state.gmNotebook
-    return (
-        <div className="ui item">
-          <h1>{gmNotebook.name}</h1>
-          <div>
-              {this.renderGMNotes()}<br/><br/>
-              <Link to={'/'+this.state.gmNotebook.name+'/notes/new'}>New Note</Link>
-          </div>
-        </div>
-    );
+        const currentUserId = this.props.auth.id
+        if (gmNotebook && gmNotebook.user_id === currentUserId){
+          return (
+            <div className="ui item">
+              <h1>{gmNotebook.name}</h1>
+              <div>
+                  {this.renderGMNotes()}<br/><br/>
+                  <Link to={'/'+this.state.gmNotebook.name+'/notes/new'}>New Note</Link>
+              </div>
+            </div>
+          );
+        } else if (gmNotebook && gmNotebook.user_id !== currentUserId ){
+          return(
+          <div className="ui item">
+            <h1>{gmNotebook.name}</h1>
+            <div>
+                {this.renderGMNotes()}<br/><br/>
+            </div>
+          </div>)
+        } else {return null}
     };
 }
 

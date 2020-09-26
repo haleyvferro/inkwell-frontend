@@ -23,8 +23,6 @@ class GMNotebooksContainer extends Component {
   render(){
   return (
     <div>
-        <h1>buncha notebooks for the games I'm running</h1>
-        {/* <button as={Link} to={`/game_master_notebooks`}>View All</button> */}
         <div className="ui items">{this.renderGMNotebooks()}</div>
     </div>
   );}
