@@ -20,7 +20,7 @@ class GMNoteShow extends Component {
         }
         fetch(`http://localhost:4000/game_master_notes/${id}`, reqObj)
         this.props.deleteGMNote(id, gmnId)
-        this.props.history.push(`/gameMasterNotebooks/${gmnName}`)
+        this.props.history.push(`/gameMasterNotebook/${gmnName}`)
     }
 
     componentDidMount() {
@@ -47,17 +47,17 @@ class GMNoteShow extends Component {
             <div>
                 <h1>{note.title}</h1>
                 <p>{note.content}</p>
-                <Link to={'/gameMasterNotebooks/'+this.state.gmnName+'/notes/'+this.state.note.id.toString()+'/edit'}>Edit</Link>
+                <Link to={'/gameMasterNotebook/'+this.state.gmnName+'/notes/'+this.state.note.id.toString()+'/edit'}>Edit</Link>
                 <button onClick={() => this.handleDelete()}>Delete</button>
                 <br/>
-                <Link to={'/gameMasterNotebooks/'+this.state.gmnName}>Back To Notebook</Link>
+                <Link to={'/gameMasterNotebook/'+this.state.gmnName}>Back To Notebook</Link>
             </div>
         );} else if (note && gmnUserId !== currentUserId ) {
             return (
                 <div>
                 <h1>{note.title}</h1>
                 <p>{note.content}</p>
-                <Link to={'/gameMasterNotebooks/'+this.state.gmnName}>Back To Notebook</Link>
+                <Link to={'/gameMasterNotebook/'+this.state.gmnName}>Back To Notebook</Link>
                 {/* <Link to={'/'+this.state.gmnName+'/notes/'+this.state.note.id.toString()+'/edit'}>Edit</Link>
                 <button onClick={() => this.handleDelete()}>Delete</button> */}
             </div>

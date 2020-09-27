@@ -13,12 +13,14 @@ class GameShow extends Component {
 
   componentDidMount() {
     const path = this.props.location.pathname.split("/");
-    const gameId = parseInt(path[path.length - 2])
-    fetch(`http://localhost:4000/games/${gameId}`)
+    const gameName = path[2]
+    console.log(path, gameName)
+    fetch(`http://localhost:4000/games/`)
     .then(resp => resp.json())
     .then(data => {
+      const game = data.find(game => game.game_name === gameName)
         this.setState({ 
-          game: data
+          game: game
         })
     })
 }
@@ -37,6 +39,7 @@ class GameShow extends Component {
               gameId={this.state.game.id}
               location={this.props.location}
               gmNotebook={this.state.game.game_master_notebook}
+              gmId={this.state.game.gm_id}
               /> 
             </div>
             <div>

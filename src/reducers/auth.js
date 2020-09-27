@@ -20,6 +20,10 @@ export default function auth(state=null, action){
             return null
         case 'NEW GAME':
             return null
+
+        case 'NEW_GAME':
+            state.games.push(action.game)
+            return state;
         
         // case 'EDIT_GM_NOTEBOOK':
         //     gmnb_index = state.game_master_notebooks.findIndex(game_master_notebook => game_master_notebook.id === action.gmnId);

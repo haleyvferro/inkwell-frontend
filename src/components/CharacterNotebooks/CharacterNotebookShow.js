@@ -23,7 +23,7 @@ class CharacterNotebookShow extends Component {
 
     componentDidMount() {
       const path = this.props.location.pathname.split("/");
-      const name = path[2];
+      const name = path[4];
     if (path.includes('characterNotebooks')){
       fetch(`http://localhost:4000/character_notebooks/`)
       .then(resp => resp.json())
@@ -70,7 +70,7 @@ class CharacterNotebookShow extends Component {
               <div>
                   {this.renderCharacterNotes()}<br/><br/>
                   <Link to={'/characterNotebooks/'+this.state.characterNotebook.name+'/notes/new'}>New Note</Link>
-                  <Link to={'/games/'+this.state.gameId+'/'+this.state.gameName}>View Game</Link>
+                  <Link to={'/games/'+this.state.gameName}>View Game</Link>
 
               </div>
             </div>
@@ -81,7 +81,7 @@ class CharacterNotebookShow extends Component {
             <h1>{characterNotebook.name}</h1>
             <div>
                 {this.renderCharacterNotes()}<br/><br/>
-                <Link to={'/games/'+this.state.gameId+'/'+this.state.gameName}>View Game</Link>
+                <Link to={'/games/'+this.state.gameName}>View Game</Link>
             </div>
           </div>)
         } else {return null}

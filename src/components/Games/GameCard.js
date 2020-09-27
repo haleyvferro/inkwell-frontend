@@ -5,11 +5,11 @@ import { Link } from "react-router-dom";
 class GameCard extends Component {
 
     render () {
-      // console.log(this.props.storeState)
+      // console.log(this.props.game.game_name)
       return (
         <div className="ui item">
           <div>
-            <Link to={'/games/'+this.props.game.id+'/'+this.props.game.game_name}>{this.props.game.game_name}</Link>
+            <Link to={'/games/'+this.props.game.game_name}>{this.props.game.game_name}</Link>
           </div>
       </div>
       );

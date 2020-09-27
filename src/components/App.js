@@ -5,6 +5,7 @@ import Navigation from './Navigation'
 import Login from './Login'
 import Dashboard from './Dashboard'
 import GameShow from './Games/GameShow'
+import GameNew from './Games/GameNew'
 import GMNotebookShow from './GMNotebooks/GMNotebookShow'
 import CharacterNotebookShow from './CharacterNotebooks/CharacterNotebookShow'
 import GMNoteShow from './GMNotebooks/GMNotes/GMNoteShow'
@@ -21,25 +22,27 @@ function App() {
       <Switch>
         <Route path='/dashboard' component={Dashboard}/>
         <Route path='/login' component={Login}/>
-
-        {/* Games  */}
-        <Route path='/games/:gameId/:gamename' component={GameShow}/>
-
         {/* Game Master Notes */}
-        <Route path='/gameMasterNotebooks/:gmnotebookname/notes/new' component={GMNoteNew}/>
-        <Route path='/gameMasterNotebooks/:gmnotebookname/notes/:id/edit' component={GMNoteEdit}/>
-        <Route path='/gameMasterNotebooks/:gmnotebookname/notes/:id' component={GMNoteShow}/>
+        <Route path='/games/:gamename/gameMasterNotebook/:gmnotebookname/notes/new' component={GMNoteNew}/>
+        <Route path='/games/:gamename/gameMasterNotebook/:gmnotebookname/notes/:id/edit' component={GMNoteEdit}/>
+        <Route path='/games/:gamename/gameMasterNotebook/:gmnotebookname/notes/:id' component={GMNoteShow}/>
 
         {/* Game Master Notebooks */}
-        <Route path='/gameMasterNotebooks/:gmnotebookname' component={GMNotebookShow}/>
+        <Route path='/games/:gamename/gameMasterNotebook/:gmnotebookname' component={GMNotebookShow}/>
 
         {/* Character Notes */}
         {/* <Route path='/characterNotebooks/:characternotebookname/notes/new' component={CharacterNoteNew}/> */}
         {/* <Route path='/characterNotebooks/:characternotebookname/notes/:id/edit' component={CharacterNoteEdit}/> */}
-        <Route path='/characterNotebooks/:characternotebookname/notes/:id' component={CharacterNoteShow}/>
+        <Route path='/games/:gamename/characterNotebooks/:characternotebookname/notes/:id' component={CharacterNoteShow}/>
 
         {/* Character Notebooks */}
-        <Route path='/characterNotebooks/:characternotebookname' component={CharacterNotebookShow}/>
+        <Route path='/games/:gamename/characterNotebooks/:characternotebookname' component={CharacterNotebookShow}/>
+
+        {/* Games  */}
+        <Route path='/games/:gamename' component={GameShow}/>
+        <Route path='/games/new' component={GameNew}/>
+
+
       </Switch>
     </div>
   );

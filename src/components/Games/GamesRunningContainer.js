@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 // import { deleteGMNotebook } from '../actions/index';
 import {connect} from 'react-redux'
 import GameCard from './GameCard'
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 
@@ -22,8 +22,8 @@ class GamesRunningContainer extends Component {
   return (
     <div>
         {/* <button as={Link} to={`/games`}>View All</button> */}
-        <div className="ui items">{this.renderGames()}</div>
-        <button>Create Game</button>
+        <div className="ui items">{this.renderGames()}</div><br/><br/>
+        <Link to={'/games/new'}>Create Game</Link>
     </div>
   );}
 }
