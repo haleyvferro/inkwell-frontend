@@ -6,43 +6,42 @@ import GMNoteCard from './GMNotes/GMNoteCard'
 class GMNotebookShow extends Component {
     state = { 
       gmNotebook: "", 
-      gameId: "",
+      // gameId: "",
       gameName: "",
       gmId: "",
     };
 
-    findGameName = (gameId) => {
-      fetch(`http://localhost:4000/games/${gameId}`)
-      .then(resp => resp.json())
-      .then(data => {
-          const gameName = data.game_name
-          this.setState({
-            gameName: gameName,
-          })
-        })
-    }
+    // findGameName = (gameId) => {
+    //   fetch(`http://localhost:4000/games/${gameId}`)
+    //   .then(resp => resp.json())
+    //   .then(data => {
+    //       const gameName = data.game_name
+    //       this.setState({
+    //         gameName: gameName,
+    //       })
+    //     })
+    // }
 
     componentDidMount() {
       const path = this.props.location.pathname.split("/");
       const gameName = path[2];
-    // if (path.includes('gameMasterNotebooks')){
-    //   fetch(`http://localhost:4000/game_master_notebooks/`)
-    //     .then(resp => resp.json())
-    //     .then(data => {
-    //       const notebook = data.find(notebook => notebook.name === name)
-    //       this.setState({
-    //         gmNotebook: notebook,
-    //         gameId: notebook.game_id,
-    //       })
-    //       this.findGameName(notebook.game_id)
-    //     })
-    //   } 
-    //   else 
-        this.setState({
-          gmNotebook: this.props.gmNotebook,
-          gmId: this.props.gmId,
-          gameName: gameName
+      // const gmNotebookName = path[4];
+    // if (!this.props){
+      fetch(`http://localhost:4000/games/`)
+        .then(resp => resp.json())
+        .then(data => {
+          // console.log(data)
+          const game = data.find(game => game.game_name === gameName)
+          const gmNotebook = game.game_master_notebook
+          this.setState({
+            gmNotebook: gmNotebook,
+            // gameId: notebook.game_id,
+            gameName: gameName
+          })
+          // this.findGameName(notebook.game_id)
         })
+      // } 
+      // else {return null}
     }
 
     renderGMNotes = () => {
@@ -59,7 +58,7 @@ class GMNotebookShow extends Component {
       }
 
     render () {
-      console.log(this.state.gameName)
+      // console.log(this.state)
         const gmNotebook = this.state.gmNotebook
         const currentUserId = this.props.auth.id
         if (gmNotebook && gmNotebook.user_id === currentUserId){
@@ -68,8 +67,8 @@ class GMNotebookShow extends Component {
               <h1>{gmNotebook.name}</h1>
               <div>
                   {this.renderGMNotes()}<br/><br/>
-                  <Link to={'/games/'+this.state.game_name+'/gameMasterNotebook/'+this.state.gmNotebook.name+'/notes/new'}>New Note</Link><br/>
-                  <Link to={'/games/'+this.state.game_name}>View Game</Link>
+                  <Link to={'/games/'+this.state.gameName+'/gameMasterNotebook/'+this.state.gmNotebook.name+'/notes/new'}>New Note</Link><br/>
+                  <Link to={'/games/'+this.state.gameName}>View Game</Link>
 
               </div>
             </div>
