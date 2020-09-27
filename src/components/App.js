@@ -23,6 +23,8 @@ function App() {
         <Route path='/dashboard' component={Dashboard}/>
         <Route path='/login' component={Login}/>
         {/* Game Master Notes */}
+        <Route path='/games/new' component={GameNew}/>
+        
         <Route path='/games/:gamename/gameMasterNotebook/:gmnotebookname/notes/new' component={GMNoteNew}/>
         <Route path='/games/:gamename/gameMasterNotebook/:gmnotebookname/notes/:id/edit' component={GMNoteEdit}/>
         <Route path='/games/:gamename/gameMasterNotebook/:gmnotebookname/notes/:id' component={GMNoteShow}/>
@@ -40,7 +42,6 @@ function App() {
 
         {/* Games  */}
         <Route path='/games/:gamename' component={GameShow}/>
-        <Route path='/games/new' component={GameNew}/>
 
 
       </Switch>

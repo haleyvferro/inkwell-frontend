@@ -7,6 +7,7 @@ class GMNoteNew extends Component {
     state = { 
         note: "", 
         gmnId: "", 
+        gameName: "", 
         gmnName: "", 
         title: "",
         content: "",
@@ -15,12 +16,14 @@ class GMNoteNew extends Component {
 
     componentDidMount() {
         const path = this.props.location.pathname.split("/");
-        const gmNotebookName = path[2]
+        const gameName = path[2]
+        const gmNotebookName = path[4]
         const gmNotebook = this.props.auth.game_master_notebooks.find(gmNotebook => gmNotebook.name === gmNotebookName)
         this.setState({
             gmnId: gmNotebook.id,
             gmnName: gmNotebookName,
-            isVisible: true
+            isVisible: true,
+            gameName: gameName
         })
     }
 
@@ -48,7 +51,7 @@ class GMNoteNew extends Component {
           .then(data => {
               console.log(data)
               this.props.newGMNote(gmnId, data)
-              this.props.history.push('/gameMasterNotebooks/'+this.state.gmnName+'/notes/'+data.id.toString())
+              this.props.history.push('/games/'+this.state.gameName+'/gameMasterNotebooks/'+this.state.gmnName+'/notes/'+data.id.toString())
           })
     }
 

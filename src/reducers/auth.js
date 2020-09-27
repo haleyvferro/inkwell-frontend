@@ -6,6 +6,7 @@
 export default function auth(state=null, action){
     let gmnb_index;
     let gmnote_index;
+    let gmNotebook;
     switch(action.type){
         
         case 'LOGIN_SUCCESS':
@@ -24,6 +25,10 @@ export default function auth(state=null, action){
         case 'NEW_GAME':
             state.games.push(action.game)
             return state;
+
+        case 'NEW_GAME_MASTER_NOTEBOOK':
+            state.game_master_notebooks.push(action.gameMasterNotebook)
+            return state;
         
         // case 'EDIT_GM_NOTEBOOK':
         //     gmnb_index = state.game_master_notebooks.findIndex(game_master_notebook => game_master_notebook.id === action.gmnId);
@@ -36,19 +41,28 @@ export default function auth(state=null, action){
         //     return state;
 
         case 'DELETE_GM_NOTE':
-            gmnb_index = state.game_master_notebooks.findIndex(game_master_notebook => game_master_notebook.id === action.gmnId);
-            gmnote_index = state.game_master_notebooks[gmnb_index].gm_notes.findIndex(note => note.id === action.id);
-            state.game_master_notebooks[gmnb_index].gm_notes.splice(gmnote_index, 1)
-            return state;
+            gmNotebook = state.game_master_notebooks.find(game_master_notebook => game_master_notebook.id === action.gmnId);
+            if (gmNotebook) {
+                gmnb_index = state.game_master_notebooks.findIndex(game_master_notebook => game_master_notebook.id === action.gmnId);
+                gmnote_index = state.game_master_notebooks[gmnb_index].gm_notes.findIndex(note => note.id === action.id);
+                state.game_master_notebooks[gmnb_index].gm_notes.splice(gmnote_index, 1)
+                return state;
+            } else {return state}
         case 'EDIT_GM_NOTE':
-            gmnb_index = state.game_master_notebooks.findIndex(game_master_notebook => game_master_notebook.id === action.gmnId);
-            gmnote_index = state.game_master_notebooks[gmnb_index].gm_notes.findIndex(note => note.id === action.id);
-            state.game_master_notebooks[gmnb_index].gm_notes.splice(gmnote_index, 1, action.note)
-            return state;
+            gmNotebook = state.game_master_notebooks.find(game_master_notebook => game_master_notebook.id === action.gmnId);
+            if (gmNotebook) {
+                gmnb_index = state.game_master_notebooks.findIndex(game_master_notebook => game_master_notebook.id === action.gmnId);
+                gmnote_index = state.game_master_notebooks[gmnb_index].gm_notes.findIndex(note => note.id === action.id);
+                state.game_master_notebooks[gmnb_index].gm_notes.splice(gmnote_index, 1, action.note)
+                return state;
+            } else {return state}
         case 'NEW_GM_NOTE':
-            gmnb_index = state.game_master_notebooks.findIndex(game_master_notebook => game_master_notebook.id === action.gmnId);
-            state.game_master_notebooks[gmnb_index].gm_notes.push(action.note)
-            return state;
+            gmNotebook = state.game_master_notebooks.find(game_master_notebook => game_master_notebook.id === action.gmnId);
+            if (gmNotebook) {
+                gmnb_index = state.game_master_notebooks.findIndex(game_master_notebook => game_master_notebook.id === action.gmnId);
+                state.game_master_notebooks[gmnb_index].gm_notes.push(action.note)
+                return state;
+            } else {return state}
 
         // case 'DELETE_CHARACTER_NOTE':
         //     cnb_index = state.character_notebooks.findIndex(character_notebook => character_notebook.id === action.cnId);

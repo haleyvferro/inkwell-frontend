@@ -45,8 +45,15 @@ export const newGMNote = (gmnId, note) => {
 
 export const newGame = (gmId, game) => {
   return {
-    type: "EDIT_GM_NOTE",
+    type: "NEW_GAME",
     gmId: gmId,
     game: game
+  }
+}
+
+export const newGMNotebook = (gameMasterNotebook) => {
+  return {
+    type: "EDIT_GM_NOTE",
+    gameMasterNotebook: gameMasterNotebook
   }
 }

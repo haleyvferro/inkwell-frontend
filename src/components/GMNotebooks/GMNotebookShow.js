@@ -35,7 +35,7 @@ class GMNotebookShow extends Component {
           const gmNotebook = game.game_master_notebook
           this.setState({
             gmNotebook: gmNotebook,
-            // gameId: notebook.game_id,
+            gmId: game.gm_id,
             gameName: gameName
           })
           // this.findGameName(notebook.game_id)
@@ -61,7 +61,17 @@ class GMNotebookShow extends Component {
       // console.log(this.state)
         const gmNotebook = this.state.gmNotebook
         const currentUserId = this.props.auth.id
-        if (gmNotebook && gmNotebook.user_id === currentUserId){
+      if (gmNotebook && gmNotebook.user_id !== currentUserId ){
+          return(
+            <div className="ui item">
+          <h1>{gmNotebook.name}</h1>
+          <div>
+              {this.renderGMNotes()}<br/><br/>
+          <Link to={'/games/'+this.state.gameName}>View Game</Link>
+          </div>
+        </div>)
+        } 
+        else if (gmNotebook && gmNotebook.user_id === currentUserId){
           return (
             <div className="ui item">
               <h1>{gmNotebook.name}</h1>
@@ -73,20 +83,11 @@ class GMNotebookShow extends Component {
               </div>
             </div>
           );
-        } else if (gmNotebook && gmNotebook.user_id !== currentUserId ){
-          return(
-            <div className="ui item">
-            <h1>{gmNotebook.name}</h1>
-            <div>
-                {this.renderGMNotes()}<br/><br/>
-            <Link to={'/games/'+this.state.gameName}>View Game</Link>
-            </div>
-          </div>)
-        } 
-        else if (!gmNotebook && this.state.gmId === currentUserId) {
+        }
+        else if (this.state.gmId === currentUserId && gmNotebook === null){
           return (
-            <Link to={'/games/'+this.state.gameName+'/newGameMasterNotebook'}>New Game Master Notebook</Link>
-          )
+            <Link to={'/games/'+this.state.gameName+'/gameMasterNotebook/new'}>New Game Master Notebook</Link>
+            )
         }
         else {return null}
     };
