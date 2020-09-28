@@ -3,16 +3,17 @@ import React, { Component } from 'react';
 // import { deleteGMNotebook } from '../actions/index';
 import {connect} from 'react-redux'
 import CharacterNotebookCard from './CharacterNotebookCard.js'
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 
 class CharacterNotebooksContainer extends Component {
 
   renderCharacterNotebooks = () => {
-    const path = this.props.location.pathname.split("/");
-      if (path.includes('games')) {
-        const cnotebooks = this.props.characterNotebooks
+    // const path = this.props.location.pathname.split("/");
+    const cnotebooks = this.props.characterNotebooks
+    // const currentUserId = this.props.auth.id
+      if (cnotebooks) {
         return cnotebooks.map(notebook => (
             <CharacterNotebookCard 
             gameName={this.props.gameName}
@@ -21,17 +22,17 @@ class CharacterNotebooksContainer extends Component {
             characterNotebook={notebook}
             />
             ));
-      } else if ('hi'){
-        const cnotebooks = this.props.auth.game_master_notebooks
-        return cnotebooks.map(notebook => (
-          <CharacterNotebookCard 
-          gameName={this.props.gameName}
-          gameId={this.props.gameId}
-          key={notebook.id} 
-          gmNotebook={notebook}
-          />
-        ));
-      }
+      } 
+      // else if (this.props.gmId === currentUserId && !cnotebooks){
+      //   return cnotebooks.map(notebook => (
+      //     <CharacterNotebookCard 
+      //     gameName={this.props.gameName}
+      //     gameId={this.props.gameId}
+      //     key={notebook.id} 
+      //     gmNotebook={notebook}
+      //     />
+      //   ));
+      // }
   }
   
 
@@ -40,6 +41,7 @@ class CharacterNotebooksContainer extends Component {
     <div>
         <h1>Character Notebooks</h1>
         <div className="ui items">{this.renderCharacterNotebooks()}</div>
+        <Link to={'/games/'+this.props.gameName+'/invite'}>Invite Players</Link>
     </div>
   );}
 }

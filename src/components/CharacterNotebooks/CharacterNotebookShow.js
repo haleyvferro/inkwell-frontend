@@ -37,11 +37,6 @@ class CharacterNotebookShow extends Component {
         })
 
       } 
-        //   else if (path.includes('games')) {
-        //    this.setState({
-        //      characterNotebook: this.props.characterNotebook
-        //    })
-        //  }
       else {
         return null
       }
@@ -52,6 +47,7 @@ class CharacterNotebookShow extends Component {
         if (characterNotes) {
         return characterNotes.map(note => (
             <CharacterNoteCard 
+            gameName={this.state.gameName}
             key={note.c_note_id}
             characterNotebookName={this.state.characterNotebook.name}
             characterNote={note}
@@ -69,7 +65,7 @@ class CharacterNotebookShow extends Component {
               <h1>{characterNotebook.name}</h1>
               <div>
                   {this.renderCharacterNotes()}<br/><br/>
-                  <Link to={'/characterNotebooks/'+this.state.characterNotebook.name+'/notes/new'}>New Note</Link>
+                  <Link to={'/games/'+this.state.gameName+'/characterNotebooks/'+this.state.characterNotebook.name+'/notes/new'}>New Note</Link>
                   <Link to={'/games/'+this.state.gameName}>View Game</Link>
 
               </div>

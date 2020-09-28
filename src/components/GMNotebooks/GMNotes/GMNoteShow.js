@@ -42,7 +42,6 @@ class GMNoteShow extends Component {
     }
 
     render () {
-        console.log(this.state)
         const note = this.state.note
         const gmnUserId = this.state.gmnUserId
         const currentUserId = this.props.auth.id
@@ -62,8 +61,6 @@ class GMNoteShow extends Component {
                 <h1>{note.title}</h1>
                 <p>{note.content}</p>
                 <Link to={'/games/'+this.state.gameName+'/gameMasterNotebook/'+this.state.gmnName}>Back To Notebook</Link>
-                {/* <Link to={'/'+this.state.gmnName+'/notes/'+this.state.note.id.toString()+'/edit'}>Edit</Link>
-                <button onClick={() => this.handleDelete()}>Delete</button> */}
             </div>
             )
         }

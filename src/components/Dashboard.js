@@ -2,6 +2,7 @@ import React  from 'react';
 // import './App.css';
 // import GMNotebooksContainer from './GMNotebooks/GMNotebooksContainer';
 import GamesRunningContainer from './Games/GamesRunningContainer';
+import InvitesContainer from './Invites/InvitesContainer';
 import { connect } from 'react-redux'
 import {currentUser} from '../actions/Auth'
 
@@ -9,6 +10,8 @@ class Dashboard extends React.Component {
 
 
   componentDidMount(){
+    
+    
     const token = localStorage.getItem('myAppToken')
     if(!token){
       this.props.history.push('/login')
@@ -19,7 +22,7 @@ class Dashboard extends React.Component {
           'Authorization': `Bearer ${token}`
         }
       }
-
+      
       fetch('http://localhost:4000/api/v1/current_user', reqObj)
       .then(resp => resp.json())
       .then(data => {
@@ -33,13 +36,12 @@ class Dashboard extends React.Component {
   }
   
   render(){
+
     return (
       <div className={null}>
         <h1>buncha games I'm running</h1>
           <GamesRunningContainer id={this.props.auth.id} />
-          {/* <h1>buncha notebooks for the games I'm running</h1>
-          <GMNotebooksContainer id={this.props.auth.id} /> */}
-          {/* <CharacterNotebooksContainer/> */}
+          <InvitesContainer />
       </div>
   );}
 }

@@ -29,6 +29,10 @@ export default function auth(state=null, action){
         case 'NEW_GAME_MASTER_NOTEBOOK':
             state.game_master_notebooks.push(action.gameMasterNotebook)
             return state;
+
+        case 'NEW_GAME_PLAYER':
+            state.game_players.push(action.gamePlayer)
+            return state;
         
         // case 'EDIT_GM_NOTEBOOK':
         //     gmnb_index = state.game_master_notebooks.findIndex(game_master_notebook => game_master_notebook.id === action.gmnId);

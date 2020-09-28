@@ -57,3 +57,9 @@ export const newGMNotebook = (gameMasterNotebook) => {
     gameMasterNotebook: gameMasterNotebook
   }
 }
+export const newGamePlayer = (gamePlayer) => {
+  return {
+    type: "NEW_GAME_Player",
+    gamePlayer: gamePlayer
+  }
+}
