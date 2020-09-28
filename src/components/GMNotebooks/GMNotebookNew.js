@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {newGMNotebook} from '../../../actions/Auth'
+import {newGMNotebook} from '../../actions/Auth'
 
 
 class GMNotebookNew extends Component {
@@ -17,7 +17,7 @@ class GMNotebookNew extends Component {
         const gameName = path[2]
         const game = this.props.auth.game_creations.find(game => game.game_name === gameName)
         this.setState({
-            gameId: game.game_id,
+            gameId: game.id,
             gameName: gameName,
             gmId: gmId,
         })
@@ -43,9 +43,9 @@ class GMNotebookNew extends Component {
           )
           .then(resp => resp.json())
           .then(data => {
-              console.log(data)
-              this.props.newGMNotebook(gameMasterNotebook)
-              this.props.history.push('/gameMasterNotebooks/'+this.state.gmnName+'/notes/'+data.id.toString())
+            console.log(data)
+              this.props.newGMNotebook(data)
+              this.props.history.push('games/'+this.state.gameName+'/gameMasterNotebook/'+this.state.gmnName)
           })
     }
 
