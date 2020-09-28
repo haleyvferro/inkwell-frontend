@@ -44,6 +44,10 @@ export default function auth(state=null, action){
         //     state.game_master_notebooks[gmnb_index].gm_notes.push(action.note)
         //     return state;
 
+        case 'DELETE_GAME_PLAYER':
+            state.game_players.filter(invite => invite.id !== action.inviteId)
+            return state;
+
         case 'DELETE_GM_NOTE':
             gmNotebook = state.game_master_notebooks.find(game_master_notebook => game_master_notebook.id === action.gmnId);
             if (gmNotebook) {

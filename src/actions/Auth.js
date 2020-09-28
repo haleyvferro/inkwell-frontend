@@ -63,3 +63,10 @@ export const newGamePlayer = (gamePlayer) => {
     gamePlayer: gamePlayer
   }
 }
+
+export const deleteGamePlayer = (inviteId) => {
+  return {
+    type: "DELETE_GAME_PLAYER",
+    inviteId: inviteId
+  }
+}

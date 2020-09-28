@@ -9,6 +9,7 @@ class InvitesContainer extends Component {
         const invitesPendingArr = this.props.auth.game_players
         if (invitesPendingArr){
             const invitesPending = invitesPendingArr.filter(invite => invite.invite_pending === true)
+            
             if (invitesPending.length > 0){
                 return invitesPending.map(invite => (
                     <InviteCard invite={invite}/>

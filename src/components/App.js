@@ -6,7 +6,7 @@ import Login from './Login'
 import Dashboard from './Dashboard'
 import GameShow from './Games/GameShow'
 import GameNew from './Games/GameNew'
-import GamePlayerInvite from './Invites/InvitePlayerForm'
+import InviteShow from './Invites/InviteShow.js'
 import GMNotebookShow from './GMNotebooks/GMNotebookShow'
 import GMNotebookNew from './GMNotebooks/GMNotebookNew'
 import CharacterNotebookShow from './CharacterNotebooks/CharacterNotebookShow'
@@ -24,11 +24,13 @@ function App() {
       <Switch>
         <Route path='/dashboard' component={Dashboard}/>
         <Route path='/login' component={Login}/>
-        {/* Game Master Notes */}
         <Route path='/games/new' component={GameNew}/>
         <Route path='/games/:gamename/gameMasterNotebook/new' component={GMNotebookNew}/>
-        <Route path='/games/:gamename/invite' component={GamePlayerInvite}/>
         
+        {/* invite */}
+        <Route path='/games/:gamename/invite/:id' component={InviteShow}/>
+        
+        {/* Game Master Notes */}
         <Route path='/games/:gamename/gameMasterNotebook/:gmnotebookname/notes/new' component={GMNoteNew}/>
         <Route path='/games/:gamename/gameMasterNotebook/:gmnotebookname/notes/:id/edit' component={GMNoteEdit}/>
         <Route path='/games/:gamename/gameMasterNotebook/:gmnotebookname/notes/:id' component={GMNoteShow}/>
