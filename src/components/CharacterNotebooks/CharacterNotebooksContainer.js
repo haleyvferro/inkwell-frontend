@@ -16,6 +16,7 @@ class CharacterNotebooksContainer extends Component {
       if (cnotebooks) {
         return cnotebooks.map(notebook => (
             <CharacterNotebookCard 
+            gmId={this.props.gmId}
             gameName={this.props.gameName}
             gameId={this.props.gameId}
             key={notebook.id} 
@@ -37,14 +38,23 @@ class CharacterNotebooksContainer extends Component {
   
 
   render(){
-  return (
-    <div>
-        <h1>Character Notebooks</h1>
-        <div className="ui items">{this.renderCharacterNotebooks()}</div>
-        <Link to={'/games/'+this.props.gameName+'/invite'}>Invite Players</Link>
-    </div>
-  );}
-}
+    if (this.props.gmId === this.props.auth.id)  {
+      return (
+        <div>
+            <h1>Character Notebooks</h1>
+            <div className="ui items">{this.renderCharacterNotebooks()}</div><br/><br/>
+            <Link to={'/games/'+this.props.gameName+'/invite'}>Invite Players</Link>
+        </div>
+      );} else {
+        return (
+          <div>
+          <h1>Character Notebooks</h1>
+          <div className="ui items">{this.renderCharacterNotebooks()}</div>
+      </div>
+        )
+      }
+  }
+} 
 
 const mapStateToProps= (state) => {
   return {

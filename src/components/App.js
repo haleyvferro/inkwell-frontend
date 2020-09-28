@@ -7,6 +7,7 @@ import Dashboard from './Dashboard'
 import GameShow from './Games/GameShow'
 import GameNew from './Games/GameNew'
 import InviteShow from './Invites/InviteShow.js'
+import InvitePlayerForm from './Invites/InvitePlayerForm.js'
 import GMNotebookShow from './GMNotebooks/GMNotebookShow'
 import GMNotebookNew from './GMNotebooks/GMNotebookNew'
 import CharacterNotebookShow from './CharacterNotebooks/CharacterNotebookShow'
@@ -29,6 +30,7 @@ function App() {
         
         {/* invite */}
         <Route path='/games/:gamename/invite/:id' component={InviteShow}/>
+        <Route path='/games/:gamename/invite' component={InvitePlayerForm}/>
         
         {/* Game Master Notes */}
         <Route path='/games/:gamename/gameMasterNotebook/:gmnotebookname/notes/new' component={GMNoteNew}/>

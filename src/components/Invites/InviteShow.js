@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 // import GameShow from './GameShow'
 import {deleteGamePlayer} from '../../actions/Auth'
+import {changeInvitePending} from '../../actions/Auth'
 
 
 class InviteShow extends Component {
@@ -30,8 +31,29 @@ class InviteShow extends Component {
         })
     }
 
-    changeInvitePending(){
-        
+    changeInvitePending = (e) => {
+      e.preventDefault()
+      const reqObj = {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({game_player: 
+          {id: this.state.inviteId,
+          game_id: this.state.game.id,
+          user_id: this.props.auth.id,
+          invite_pending: false
+        }}),
+      };
+      fetch(
+        `http://localhost:4000/game_players/${this.state.inviteId}`,
+        reqObj
+      )
+      .then(resp => resp.json())
+      .then(data => {
+          this.props.changeInvitePending(this.state.inviteId, data)
+          this.props.history.push('/games/'+this.state.game.game_name)
+      })
     }
 
     deleteGamePlayer(){
@@ -50,9 +72,9 @@ class InviteShow extends Component {
             <div>
                 <h1>{this.state.game.game_name}</h1>
                 <p>{this.state.game.game_description}</p>
-                <Link to={null} onClick={() => this.changeInvitePending()}>Accept</Link> <Link to={null} onClick={() => this.deleteGamePlayer()}>Decline</Link>
+                <button onClick={this.changeInvitePending}>Accept</button> <button onClick={this.deleteGamePlayer}>Decline</button>
             </div>
-        )}
+        )} else { return null }
     }
     
 }
@@ -64,7 +86,8 @@ const mapStateToProps= (state) => {
   }
 
   const mapDispatchToProps = {
-    deleteGamePlayer
+    deleteGamePlayer,
+    changeInvitePending
 }
   
   export default connect(mapStateToProps, mapDispatchToProps)(InviteShow)

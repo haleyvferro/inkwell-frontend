@@ -27,8 +27,8 @@ class GameShow extends Component {
 
     render () {
       const game = this.state.game
-      const currentPlayerHasCharacterNotebook = game.character_notebooks.find(cNotebook => cNotebook.user_id === this.props.auth.id)
-      const isPlayer = this.props.auth.game_players.find(invite => invite.game_id === game.id)
+      // const currentPlayerHasCharacterNotebook = game.character_notebooks.find(cNotebook => cNotebook.user_id === this.props.auth.id)
+      // const isPlayer = this.props.auth.game_players.find(invite => invite.game_id === game.id)
       if (game) {
         return (
           // <div>'hi'</div>

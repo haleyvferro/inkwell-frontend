@@ -70,3 +70,11 @@ export const deleteGamePlayer = (inviteId) => {
     inviteId: inviteId
   }
 }
+
+export const changeInvitePending = (inviteId, invite) => {
+  return {
+    type: "CHANGE_INVITE_PENDING",
+    inviteId: inviteId,
+    invite: invite
+  }
+}

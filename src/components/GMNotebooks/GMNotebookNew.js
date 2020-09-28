@@ -15,12 +15,16 @@ class GMNotebookNew extends Component {
         const gmId = this.props.auth.id
         const path = this.props.location.pathname.split("/");
         const gameName = path[2]
-        const game = this.props.auth.game_creations.find(game => game.game_name === gameName)
-        this.setState({
-            gameId: game.id,
-            gameName: gameName,
-            gmId: gmId,
-        })
+        fetch(`http://localhost:4000/games/`)
+        .then(resp => resp.json())
+        .then(data => {
+          const game = data.find(game => game.game_name === gameName)
+            this.setState({ 
+              gameId: game.id,
+              gameName: gameName,
+              gmId: gmId
+            })
+          })
     }
 
     submitHandler = (e) => {

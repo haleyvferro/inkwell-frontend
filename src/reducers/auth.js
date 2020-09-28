@@ -17,11 +17,6 @@ export default function auth(state=null, action){
         default:
             return state
 
-        case 'EDIT_GAME':
-            return null
-        case 'NEW GAME':
-            return null
-
         case 'NEW_GAME':
             state.games.push(action.game)
             return state;
@@ -46,6 +41,11 @@ export default function auth(state=null, action){
 
         case 'DELETE_GAME_PLAYER':
             state.game_players.filter(invite => invite.id !== action.inviteId)
+            return state;
+
+        case 'CHANGE_INVITE_PENDING':
+            const invite_index = state.game_players.findIndex(invite => invite.id === action.inviteId)
+            state.game_players.splice(invite_index, 1, action.invite)
             return state;
 
         case 'DELETE_GM_NOTE':
