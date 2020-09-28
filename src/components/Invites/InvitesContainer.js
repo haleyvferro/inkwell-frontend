@@ -1,24 +1,37 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
+import InviteCard from './InviteCard'
 
 
 class InvitesContainer extends Component {
 
-    componentDidMount(){
+    findInvites(){
         const invitesPendingArr = this.props.auth.game_players
         if (invitesPendingArr){
-            const invitesPending = invitesPendingArr.filter(invite => invite.invite_pending !== true)
-            console.log(invitesPending, invitesPendingArr)
+            const invitesPending = invitesPendingArr.filter(invite => invite.invite_pending === true)
+            if (invitesPending.length > 0){
+                return invitesPending.map(invite => (
+                    <InviteCard invite={invite}/>
+                ))
+            }
+            else {
+                console.log('nothing here, bro, forreal')
+            }
         } else {
             console.log('nothing here, bro')
         }
     }
 
+    // componentDidMount(){
+        
+    // }
+
     render(){
     
         return (
             <div>
-                'hi'
+                hi
+                {this.findInvites()}
             </div>
         )
     }

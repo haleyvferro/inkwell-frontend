@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import {newGamePlayer} from '../../actions/Auth'
 
+// let user;
 
 class InvitePlayerForm extends Component {
     state = { 
@@ -23,44 +24,47 @@ class InvitePlayerForm extends Component {
         })
     }
 
-    findUser(userEmail){
-      fetch(
-        `http://localhost:4000/users/`
-      )
-      .then(resp => resp.json())
-      .then(data => {
-        const user = data.find(user => user.email === userEmail)
-        this.setState({
-          userId: user.id
-        })
-      })
-    }
+    // findUser(userEmail){
+
+    // }
 
     submitHandler = (e) => {
         e.preventDefault()
-        this.findUser(this.state.userEmail)
-        const reqObj = {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({game_player: 
-              {
-                user_id: this.state.userId,
-                game_id: this.state.gameId,
-                invite_pending: this.state.invitePending,
-            }}),
-          };
-          fetch(
-            `http://localhost:4000/game_players/`,
-            reqObj
-          )
-          .then(resp => resp.json())
-          .then(data => {
-            console.log(data)
-              this.props.newGamePlayer(data)
-              this.props.history.push('/games/'+this.state.gameName)
-          })
+        let userId;
+        fetch(
+          `http://localhost:4000/users/`
+        )
+        .then(resp => resp.json())
+        .then(data => {
+          const user = data.find(user => user.email === this.state.userEmail)
+          userId = user.id
+          console.log(userId, 'inside')
+          
+          const reqObj = {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({game_player: 
+                {
+                  user_id: userId,
+                  game_id: this.state.gameId,
+                  invite_pending: this.state.invitePending,
+              }}),
+            };
+            console.log(reqObj)
+            fetch(
+              `http://localhost:4000/game_players/`,
+              reqObj
+            )
+            .then(resp => resp.json())
+            .then(data => {
+                this.props.newGamePlayer(data)
+                this.props.history.push('/games/'+this.state.gameName)
+            })
+        })
+
+        
     }
 
     changeHandler = (e) => {
@@ -68,7 +72,7 @@ class InvitePlayerForm extends Component {
       };
 
     render () {
-        console.log(this.state)
+      if (this.state.gameId){
         return (
             <div>
                 <form onSubmit={this.submitHandler} className="ui form">
@@ -85,7 +89,7 @@ class InvitePlayerForm extends Component {
           <input type="submit" />
         </form>
             </div>
-        );
+        );} else { return null }
     }
 }
 

@@ -36,12 +36,12 @@ class Dashboard extends React.Component {
   }
   
   render(){
-
+      // console.log(this.props.auth.)
     return (
       <div className={null}>
+          <InvitesContainer />
         <h1>buncha games I'm running</h1>
           <GamesRunningContainer id={this.props.auth.id} />
-          <InvitesContainer />
       </div>
   );}
 }
