@@ -17,11 +17,12 @@ class InvitePlayerForm extends Component {
         const path = this.props.location.pathname.split("/");
         const gameName = path[2]
         const game = this.props.auth.game_creations.find(game => game.game_name === gameName)
+        if (game){
         this.setState({
             gameId: game.id,
             gameName: gameName,
             invitePending: true,
-        })
+        })}
     }
 
     // findUser(userEmail){

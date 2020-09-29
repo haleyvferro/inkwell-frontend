@@ -45,7 +45,7 @@ class GMNoteShow extends Component {
         const note = this.state.note
         const gmnUserId = this.state.gmnUserId
         const currentUserId = this.props.auth.id
-            if (note && gmnUserId === currentUserId) {
+            if (note!==null && gmnUserId === currentUserId) {
         return (
             <div>
                 <h1>{note.title}</h1>

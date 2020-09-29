@@ -12,14 +12,18 @@ class CharacterNotebooksContainer extends Component {
     userIds: "",
     currentUserId: "",
     existingCNBUsers: "",
+    gameName: "",
   }
 
   componentDidMount () {
+    const path = this.props.location.pathname.split("/");
+    const gameName = path[2]
     const cnotebooks = this.props.characterNotebooks
     const currentUserId = this.props.auth.id
     const existingCNBUsers = cnotebooks.map(notebook => notebook.user_id)
     const userIds = this.props.users.map(user => user.id)
     this.setState({
+      gameName: gameName,
       userIds: userIds,
       currentUserId: currentUserId,
       existingCNBUsers: existingCNBUsers,
@@ -27,7 +31,6 @@ class CharacterNotebooksContainer extends Component {
   }
 
   renderCharacterNotebooks = () => {
-    // const path = this.props.location.pathname.split("/");
     const cnotebooks = this.props.characterNotebooks
     // console.log('users', usersincludecurrentuser, 'notebooks', cnbsincludecurrentuser)
       if (cnotebooks) {
@@ -67,7 +70,7 @@ class CharacterNotebooksContainer extends Component {
        return ( <div>
         <h1>Character Notebooks</h1>
         <div className="ui items">{this.renderCharacterNotebooks()}</div><br/><br/>
-        <Link to={'/games/'+this.state.gameName+'/characterNotebook/new'}>Create Your Character</Link>
+        <Link to={'/games/'+this.state.gameName+'/characterNotebooks/new'}>Create Your Character</Link>
         </div>)
       }
       else {

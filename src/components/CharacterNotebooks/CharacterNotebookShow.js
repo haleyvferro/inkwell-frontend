@@ -18,11 +18,12 @@ class CharacterNotebookShow extends Component {
       .then(resp => resp.json())
       .then(data => {
           const notebook = data.find(notebook => notebook.name === name)
+          if (notebook){
           this.setState({
             characterNotebook: notebook,
             userId: notebook.user_id,
             gameName: gameName,
-          })
+          })}
         })
     }
 

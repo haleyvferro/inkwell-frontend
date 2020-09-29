@@ -7,6 +7,9 @@ export default function auth(state=null, action){
     let gmnb_index;
     let gmnote_index;
     let gmNotebook;
+    let cnb_index;
+    let cnote_index;
+    let characterNotebook;
     switch(action.type){
         
         case 'LOGIN_SUCCESS':
@@ -23,6 +26,10 @@ export default function auth(state=null, action){
 
         case 'NEW_GAME_MASTER_NOTEBOOK':
             state.game_master_notebooks.push(action.gameMasterNotebook)
+            return state;
+
+        case 'NEW_CHARACTER_NOTEBOOK':
+            state.character_notebooks.push(action.characterNotebook)
             return state;
 
         case 'NEW_GAME_PLAYER':
@@ -71,21 +78,31 @@ export default function auth(state=null, action){
                 state.game_master_notebooks[gmnb_index].gm_notes.push(action.note)
                 return state;
             } else {return state}
+                
+        case 'DELETE_CHARACTER_NOTE':
+            characterNotebook = state.character_notebooks.find(character_notebook => character_notebook.id === action.cnId);
+            if (characterNotebook) {
+                cnb_index = state.character_notebooks.findIndex(character_notebook => character_notebook.id === action.cnId);
+                cnote_index = state.character_notebooks[cnb_index].character_notes.findIndex(note => note.c_note_id === action.id);
+                state.character_notebooks[cnb_index].character_notes.splice(cnote_index, 1)
+            return state;
+            } else {return state}
+        case 'EDIT_CHARACTER_NOTE':
+            characterNotebook = state.character_notebooks.find(character_notebook => character_notebook.id === action.cnId);
+            if (characterNotebook.character_notes) {
+                cnb_index = state.character_notebooks.findIndex(character_notebook => character_notebook.id === action.cnId);
+                cnote_index = state.character_notebooks[cnb_index].character_notes.findIndex(note => note.c_note_id === action.id);
+                state.character_notebooks[cnb_index].character_notes.splice(cnote_index, 1, action.note)
+            return state;
+        } else {return state}
+        case 'NEW_CHARACTER_NOTE':
+            characterNotebook = state.character_notebooks.find(character_notebook => character_notebook.id === action.cnId);
+            if (characterNotebook) {
+                cnb_index = state.character_notebooks.findIndex(character_notebook => character_notebook.id === action.cnId);
+                state.character_notebooks[cnb_index].character_notes.push(action.note)
+                return state;            
+        } else {return state}
 
-        // case 'DELETE_CHARACTER_NOTE':
-        //     cnb_index = state.character_notebooks.findIndex(character_notebook => character_notebook.id === action.cnId);
-        //     cnote_index = state.character_notebooks[cnb_index].c_notes.findIndex(note => note.id === action.id);
-        //     state.character_notebooks[cnb_index].c_notes.splice(cnote_index, 1)
-        //     return state;
-        // case 'EDIT_CHARACTER_NOTE':
-        //     cnb_index = state.character_notebooks.findIndex(character_notebook => character_notebook.id === action.cnId);
-        //     cnote_index = state.character_notebooks[cnb_index].c_notes.findIndex(note => note.id === action.id);
-        //     state.character_notebooks[cnb_index].c_notes.splice(cnote_index, 1, action.note)
-        //     return state;
-        // case 'NEW_CHARACTER_NOTE':
-        //     cnb_index = state.character_notebooks.findIndex(character_notebook => character_notebook.id === action.cnId);
-        //     state.character_notebooks[cnb_index].c_notes.push(action.note)
-        //     return state;
         
     }
 }

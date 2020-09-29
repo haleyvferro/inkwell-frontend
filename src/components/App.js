@@ -11,11 +11,12 @@ import InvitePlayerForm from './Invites/InvitePlayerForm.js'
 import GMNotebookShow from './GMNotebooks/GMNotebookShow'
 import GMNotebookNew from './GMNotebooks/GMNotebookNew'
 import CharacterNotebookShow from './CharacterNotebooks/CharacterNotebookShow'
+import CharacterNotebookNew from './CharacterNotebooks/CharacterNotebookNew'
 import GMNoteShow from './GMNotebooks/GMNotes/GMNoteShow'
 import GMNoteNew from './GMNotebooks/GMNotes/GMNoteNew'
 import GMNoteEdit from './GMNotebooks/GMNotes/GMNoteEdit'
 import CharacterNoteShow from './CharacterNotebooks/CharacterNotes/CharacterNoteShow'
-// import CharacterNoteNew from './CharacterNotebooks/CharacterNotes/CharacterNoteNew'
+import CharacterNoteNew from './CharacterNotebooks/CharacterNotes/CharacterNoteNew'
 // import CharacterNoteEdit from './CharacterNotebooks/CharacterNotes/CharacterNoteEdit'
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <Route path='/login' component={Login}/>
         <Route path='/games/new' component={GameNew}/>
         <Route path='/games/:gamename/gameMasterNotebook/new' component={GMNotebookNew}/>
+        <Route path='/games/:gamename/characterNotebooks/new' component={CharacterNotebookNew}/>
         
         {/* invite */}
         <Route path='/games/:gamename/invite/:id' component={InviteShow}/>
@@ -41,8 +43,8 @@ function App() {
         <Route path='/games/:gamename/gameMasterNotebook/:gmnotebookname' component={GMNotebookShow}/>
 
         {/* Character Notes */}
-        {/* <Route path='/characterNotebooks/:characternotebookname/notes/new' component={CharacterNoteNew}/> */}
-        {/* <Route path='/characterNotebooks/:characternotebookname/notes/:id/edit' component={CharacterNoteEdit}/> */}
+        <Route path='/games/:gamename/characterNotebooks/:characternotebookname/notes/new' component={CharacterNoteNew}/> 
+        {/* <Route path='/games/:gamename/characterNotebooks/:characternotebookname/notes/:id/edit' component={CharacterNoteEdit}/> */}
         <Route path='/games/:gamename/characterNotebooks/:characternotebookname/notes/:id' component={CharacterNoteShow}/>
 
         {/* Character Notebooks */}

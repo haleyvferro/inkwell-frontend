@@ -23,7 +23,6 @@ class GamesPlayingContainer extends Component {
     <div>
         {/* <button as={Link} to={`/games`}>View All</button> */}
         <div className="ui items">{this.renderGames()}</div><br/><br/>
-        <Link to={'/games/new'}>Create Game</Link>
     </div>
   );}
 }

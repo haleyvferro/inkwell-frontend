@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import { Link } from "react-router-dom";
-
+import {deleteCharacterNote} from '../../../actions/Auth'
 
 
 class CharacterNoteShow extends Component {
@@ -15,7 +15,7 @@ class CharacterNoteShow extends Component {
   }
 
   handleDelete() {
-    const id = this.state.note.id
+    const id = this.state.note.c_note_id
     const cnId = this.state.cnId
     const cnName = this.state.cnName
     const gameName = this.state.gameName
@@ -49,25 +49,26 @@ class CharacterNoteShow extends Component {
   }
 
   render () {
+    console.log(this.state)
     const note = this.state.note
     const cnUserId = this.state.cnUserId
     const currentUserId = this.props.auth.id
-        if (note && cnUserId === currentUserId) {
+        if (note !==null && cnUserId === currentUserId) {
     return (
         <div>
-            <h1>{note.title}</h1>
-            <p>{note.content}</p>
-            <Link to={'/games/'+this.state.gameName+'/characterNotebook/'+this.state.cnName+'/notes/'+this.state.note.id.toString()+'/edit'}>Edit</Link>
+            <h1>{note.c_note_title}</h1>
+            <p>{note.c_note_content}</p>
+            <Link to={'/games/'+this.state.gameName+'/characterNotebooks/'+this.state.cnName+'/notes/'+this.state.note.c_note_id.toString()+'/edit'}>Edit</Link>
             <button onClick={() => this.handleDelete()}>Delete</button>
             <br/>
-            <Link to={'/games/'+this.state.gameName+'/characterNotebook/'+this.state.cnName}>Back To Notebook</Link>
+            <Link to={'/games/'+this.state.gameName+'/characterNotebooks/'+this.state.cnName}>Back To Notebook</Link>
         </div>
-    );} else if (note && cnUserId !== currentUserId ) {
+    );} else if (note !==null && cnUserId !== currentUserId ) {
         return (
             <div>
-            <h1>{note.title}</h1>
-            <p>{note.content}</p>
-            <Link to={'/games/'+this.state.gameName+'/characterNotebook/'+this.state.cnName}>Back To Notebook</Link>
+            <h1>{note.c_note_title}</h1>
+            <p>{note.c_note_content}</p>
+            <Link to={'/games/'+this.state.gameName+'/characterNotebooks/'+this.state.cnName}>Back To Notebook</Link>
         </div>
         )
     }
@@ -82,8 +83,8 @@ const mapStateToProps= (state) => {
     }
   }
   
-//   const mapDispatchToProps = {
-//       deletecNote
-//   }
+  const mapDispatchToProps = {
+      deleteCharacterNote
+  }
   
-  export default connect(mapStateToProps, null)(CharacterNoteShow)
+  export default connect(mapStateToProps, mapDispatchToProps)(CharacterNoteShow)

@@ -43,6 +43,31 @@ export const newGMNote = (gmnId, note) => {
   }
 }
 
+export const deleteCharacterNote = (id, cnId) => {
+  return {
+    type: "DELETE_CHARACTER_NOTE",
+    id: id,
+    cnId: cnId
+  }
+}
+
+export const editCharacterNote = (id, cnId, note) => {
+  return {
+    type: "EDIT_CHARACTER_NOTE",
+    id: id,
+    cnId: cnId,
+    note: note
+  }
+}
+
+export const newCharacterNote = (cnId, note) => {
+  return {
+    type: "EDIT_CHARACTER_NOTE",
+    cnId: cnId,
+    note: note
+  }
+}
+
 export const newGame = (gmId, game) => {
   return {
     type: "NEW_GAME",
@@ -57,6 +82,14 @@ export const newGMNotebook = (gameMasterNotebook) => {
     gameMasterNotebook: gameMasterNotebook
   }
 }
+
+export const newCharacterNotebook = (characterNotebook) => {
+  return {
+    type: "NEW_CHARACTER_NOTEBOOK",
+    characterNotebook: characterNotebook
+  }
+}
+
 export const newGamePlayer = (gamePlayer) => {
   return {
     type: "NEW_GAME_Player",
