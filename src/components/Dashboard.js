@@ -2,6 +2,7 @@ import React  from 'react';
 // import './App.css';
 // import GMNotebooksContainer from './GMNotebooks/GMNotebooksContainer';
 import GamesRunningContainer from './Games/GamesRunningContainer';
+import GamesPlayingContainer from './Games/GamesPlayingContainer';
 import InvitesContainer from './Invites/InvitesContainer';
 import { connect } from 'react-redux'
 import {currentUser} from '../actions/Auth'
@@ -42,6 +43,8 @@ class Dashboard extends React.Component {
           <InvitesContainer />
         <h1>buncha games I'm running</h1>
           <GamesRunningContainer id={this.props.auth.id} />
+        <h1>buncha games I'm playing in</h1>
+          <GamesPlayingContainer id={this.props.auth.id} />
       </div>
   );}
 }

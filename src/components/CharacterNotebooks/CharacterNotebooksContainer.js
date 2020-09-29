@@ -8,11 +8,28 @@ import { Link } from "react-router-dom";
 
 
 class CharacterNotebooksContainer extends Component {
+  state ={
+    userIds: "",
+    currentUserId: "",
+    existingCNBUsers: "",
+  }
+
+  componentDidMount () {
+    const cnotebooks = this.props.characterNotebooks
+    const currentUserId = this.props.auth.id
+    const existingCNBUsers = cnotebooks.map(notebook => notebook.user_id)
+    const userIds = this.props.users.map(user => user.id)
+    this.setState({
+      userIds: userIds,
+      currentUserId: currentUserId,
+      existingCNBUsers: existingCNBUsers,
+    })
+  }
 
   renderCharacterNotebooks = () => {
     // const path = this.props.location.pathname.split("/");
     const cnotebooks = this.props.characterNotebooks
-    // const currentUserId = this.props.auth.id
+    // console.log('users', usersincludecurrentuser, 'notebooks', cnbsincludecurrentuser)
       if (cnotebooks) {
         return cnotebooks.map(notebook => (
             <CharacterNotebookCard 
@@ -38,6 +55,7 @@ class CharacterNotebooksContainer extends Component {
   
 
   render(){
+    console.log(this.state)
     if (this.props.gmId === this.props.auth.id)  {
       return (
         <div>
@@ -45,7 +63,14 @@ class CharacterNotebooksContainer extends Component {
             <div className="ui items">{this.renderCharacterNotebooks()}</div><br/><br/>
             <Link to={'/games/'+this.props.gameName+'/invite'}>Invite Players</Link>
         </div>
-      );} else {
+      );} else if (this.state.userIds.includes(this.state.currentUserId) && !this.state.existingCNBUsers.includes(this.state.currentUserId)){
+       return ( <div>
+        <h1>Character Notebooks</h1>
+        <div className="ui items">{this.renderCharacterNotebooks()}</div><br/><br/>
+        <Link to={'/games/'+this.state.gameName+'/characterNotebook/new'}>Create Your Character</Link>
+        </div>)
+      }
+      else {
         return (
           <div>
           <h1>Character Notebooks</h1>

@@ -6,40 +6,24 @@ import CharacterNoteCard from './CharacterNotes/CharacterNoteCard'
 class CharacterNotebookShow extends Component {
     state = { 
       characterNotebook: "", 
-      gameId: "",
       gameName: "",
+      userId: "",
     };
-
-    findGameName = (gameId) => {
-      fetch(`http://localhost:4000/games/${gameId}`)
-      .then(resp => resp.json())
-      .then(data => {
-          const gameName = data.game_name
-          this.setState({
-            gameName: gameName, 
-          })
-        })
-    }
 
     componentDidMount() {
       const path = this.props.location.pathname.split("/");
       const name = path[4];
-    if (path.includes('characterNotebooks')){
+      const gameName = path[2]
       fetch(`http://localhost:4000/character_notebooks/`)
       .then(resp => resp.json())
       .then(data => {
           const notebook = data.find(notebook => notebook.name === name)
           this.setState({
             characterNotebook: notebook,
-            gameId: notebook.game_id,
+            userId: notebook.user_id,
+            gameName: gameName,
           })
-          this.findGameName(notebook.game_id)
         })
-
-      } 
-      else {
-        return null
-      }
     }
 
     renderCharacterNotes = () => {

@@ -11,26 +11,23 @@ class GMNotebookShow extends Component {
       gmId: "",
     };
 
-    // findGameName = (gameId) => {
-    //   fetch(`http://localhost:4000/games/${gameId}`)
-    //   .then(resp => resp.json())
-    //   .then(data => {
-    //       const gameName = data.game_name
-    //       this.setState({
-    //         gameName: gameName,
-    //       })
-    //     })
-    // }
+    findGameName = (gameId) => {
+      fetch(`http://localhost:4000/games/${gameId}`)
+      .then(resp => resp.json())
+      .then(data => {
+          const gameName = data.game_name
+          this.setState({
+            gameName: gameName, 
+          })
+        })
+    }
 
     componentDidMount() {
       const path = this.props.location.pathname.split("/");
       const gameName = path[2];
-      // const gmNotebookName = path[4];
-    // if (!this.props){
       fetch(`http://localhost:4000/games/`)
         .then(resp => resp.json())
         .then(data => {
-          // console.log(data)
           const game = data.find(game => game.game_name === gameName)
           const gmNotebook = game.game_master_notebook
           this.setState({
@@ -38,10 +35,7 @@ class GMNotebookShow extends Component {
             gmId: game.gm_id,
             gameName: gameName
           })
-          // this.findGameName(notebook.game_id)
         })
-      // } 
-      // else {return null}
     }
 
     renderGMNotes = () => {

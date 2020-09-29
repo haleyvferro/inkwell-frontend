@@ -18,8 +18,8 @@ class InviteShow extends Component {
   componentDidMount() {
         const path = this.props.location.pathname.split("/");
         const gameName = path[2]
-        const inviteId = path[-1]
-        console.log(path, gameName)
+        const inviteId = path[4]
+        console.log(gameName, inviteId)
         fetch(`http://localhost:4000/games/`)
         .then(resp => resp.json())
         .then(data => {
@@ -67,6 +67,7 @@ class InviteShow extends Component {
     }
 
     render () {
+      console.log(this.state)
         if (this.state.game){
         return (
             <div>

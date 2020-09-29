@@ -44,7 +44,8 @@ class GameShow extends Component {
               /> 
             </div>
             <div>
-              <CharacterNotebooksContainer 
+              <CharacterNotebooksContainer
+              users={this.state.game.users}
               gmId={this.state.game.gm_id}
               gameName={this.state.game.game_name}
               gameId={this.state.game.id}
