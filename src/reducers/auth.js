@@ -81,7 +81,7 @@ export default function auth(state=null, action){
                 
         case 'DELETE_CHARACTER_NOTE':
             characterNotebook = state.character_notebooks.find(character_notebook => character_notebook.id === action.cnId);
-            if (characterNotebook) {
+            if (characterNotebook.character_notes) {
                 cnb_index = state.character_notebooks.findIndex(character_notebook => character_notebook.id === action.cnId);
                 cnote_index = state.character_notebooks[cnb_index].character_notes.findIndex(note => note.c_note_id === action.id);
                 state.character_notebooks[cnb_index].character_notes.splice(cnote_index, 1)
