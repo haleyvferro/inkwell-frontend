@@ -24,7 +24,7 @@ class CharacterNoteShow extends Component {
     }
     fetch(`http://localhost:4000/character_notes/${id}`, reqObj)
     this.props.deleteCharacterNote(id, cnId)
-    this.props.history.push(`/games/${gameName}/characterNotebook/${cnName}`)
+    this.props.history.push(`/games/${gameName}/characterNotebooks/${cnName}`)
   }
 
   componentDidMount() {

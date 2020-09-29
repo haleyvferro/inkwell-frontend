@@ -37,7 +37,7 @@ class CharacterNoteNew extends Component {
             },
             body: JSON.stringify({character_note: 
               {
-              title: this.state.title,
+              c_note_title: this.state.title,
               content: this.state.content,
               character_notebook_id: cnId,
               visible_to_other_players: this.state.isVisible,
@@ -62,7 +62,7 @@ class CharacterNoteNew extends Component {
       };
 
     render () {
-        console.log(this.state)
+        
         return (
             <div>
                 <form onSubmit={this.submitHandler} className="ui form">

@@ -83,7 +83,7 @@ export default function auth(state=null, action){
             characterNotebook = state.character_notebooks.find(character_notebook => character_notebook.id === action.cnId);
             if (characterNotebook.character_notes) {
                 cnb_index = state.character_notebooks.findIndex(character_notebook => character_notebook.id === action.cnId);
-                cnote_index = state.character_notebooks[cnb_index].character_notes.findIndex(note => note.c_note_id === action.id);
+                cnote_index = state.character_notebooks[cnb_index].character_notes.findIndex(note => note.id === action.id);
                 state.character_notebooks[cnb_index].character_notes.splice(cnote_index, 1)
             return state;
             } else {return state}
@@ -91,7 +91,7 @@ export default function auth(state=null, action){
             characterNotebook = state.character_notebooks.find(character_notebook => character_notebook.id === action.cnId);
             if (characterNotebook.character_notes) {
                 cnb_index = state.character_notebooks.findIndex(character_notebook => character_notebook.id === action.cnId);
-                cnote_index = state.character_notebooks[cnb_index].character_notes.findIndex(note => note.c_note_id === action.id);
+                cnote_index = state.character_notebooks[cnb_index].character_notes.findIndex(note => note.id === action.id);
                 state.character_notebooks[cnb_index].character_notes.splice(cnote_index, 1, action.note)
             return state;
         } else {return state}

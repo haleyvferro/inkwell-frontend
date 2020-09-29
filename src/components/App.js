@@ -17,7 +17,7 @@ import GMNoteNew from './GMNotebooks/GMNotes/GMNoteNew'
 import GMNoteEdit from './GMNotebooks/GMNotes/GMNoteEdit'
 import CharacterNoteShow from './CharacterNotebooks/CharacterNotes/CharacterNoteShow'
 import CharacterNoteNew from './CharacterNotebooks/CharacterNotes/CharacterNoteNew'
-// import CharacterNoteEdit from './CharacterNotebooks/CharacterNotes/CharacterNoteEdit'
+import CharacterNoteEdit from './CharacterNotebooks/CharacterNotes/CharacterNoteEdit'
 
 function App() {
   return (
@@ -44,7 +44,7 @@ function App() {
 
         {/* Character Notes */}
         <Route path='/games/:gamename/characterNotebooks/:characternotebookname/notes/new' component={CharacterNoteNew}/> 
-        {/* <Route path='/games/:gamename/characterNotebooks/:characternotebookname/notes/:id/edit' component={CharacterNoteEdit}/> */}
+        <Route path='/games/:gamename/characterNotebooks/:characternotebookname/notes/:id/edit' component={CharacterNoteEdit}/>
         <Route path='/games/:gamename/characterNotebooks/:characternotebookname/notes/:id' component={CharacterNoteShow}/>
 
         {/* Character Notebooks */}
