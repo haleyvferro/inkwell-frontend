@@ -53,7 +53,7 @@ class CharacterNotebookNew extends Component {
           .then(data => {
             console.log(data)
               this.props.newCharacterNotebook(data)
-              this.props.history.push('games/'+this.state.gameName+'/characterNotebooks/'+this.state.characterName)
+              this.props.history.push('/games/'+this.state.gameName+'/characterNotebooks/'+this.state.characterName)
           })
     }
 

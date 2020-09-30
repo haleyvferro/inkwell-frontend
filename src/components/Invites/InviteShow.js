@@ -8,25 +8,36 @@ import {changeInvitePending} from '../../actions/Auth'
 
 class InviteShow extends Component {
 
-  state = {
-    game: "",
-    invite: "",
-    invitePending: "",
-    inviteId: "",
-  }
+  constructor (){
+    super()
+    this.state = {
+      game: "",
+      inviteId: null,
+  }}
+  
+      deleteGamePlayer(){
+            const inviteId = this.state.inviteId
+            const reqObj = {
+                method: 'DELETE'
+            }
+            fetch(`http://localhost:4000/game_players/${inviteId}`, reqObj)
+            this.props.deleteGamePlayer(inviteId)
+            this.props.history.push('/dashboard')
+      }
 
   componentDidMount() {
         const path = this.props.location.pathname.split("/");
         const gameName = path[2]
-        const inviteId = path[4]
-        console.log(gameName, inviteId)
+        const inviteId = parseInt(path[4])
+        this.setState({
+          inviteId: inviteId,
+        })
         fetch(`http://localhost:4000/games/`)
         .then(resp => resp.json())
         .then(data => {
         const game = data.find(game => game.game_name === gameName)
             this.setState({ 
             game: game,
-            inviteId: inviteId,
             })
         })
     }
@@ -56,24 +67,14 @@ class InviteShow extends Component {
       })
     }
 
-    deleteGamePlayer(){
-        const inviteId = this.state.inviteId
-        const reqObj = {
-            method: 'DELETE'
-        }
-        fetch(`http://localhost:4000/game_players/${inviteId}`, reqObj)
-        this.props.deleteGamePlayer(inviteId)
-        this.props.history.push('/dashboard')
-    }
-
     render () {
       console.log(this.state)
-        if (this.state.game){
+        if (this.state.inviteId){
         return (
             <div>
                 <h1>{this.state.game.game_name}</h1>
                 <p>{this.state.game.game_description}</p>
-                <button onClick={this.changeInvitePending}>Accept</button> <button onClick={this.deleteGamePlayer}>Decline</button>
+                <button onClick={(e) => this.changeInvitePending(e)}>Accept</button> <button onClick={() => this.deleteGamePlayer()}>Decline</button>
             </div>
         )} else { return null }
     }

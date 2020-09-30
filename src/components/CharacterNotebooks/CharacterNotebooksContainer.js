@@ -58,7 +58,6 @@ class CharacterNotebooksContainer extends Component {
   
 
   render(){
-    console.log(this.state)
     if (this.props.gmId === this.props.auth.id)  {
       return (
         <div>

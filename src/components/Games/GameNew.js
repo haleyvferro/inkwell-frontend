@@ -39,7 +39,7 @@ class GameNew extends Component {
         .then(resp => resp.json())
         .then(data => {
             console.log(data)
-            this.props.newGame(data)
+            this.props.newGame(this.state.gmId, data)
             this.props.history.push('/games/'+this.state.gameName)
         })
   }
@@ -49,7 +49,6 @@ class GameNew extends Component {
   }
 
   render () {
-      // console.log(this.state, 'trying to render?')
       return (
           <div>
             <form onSubmit={this.submitHandler} className="ui form">

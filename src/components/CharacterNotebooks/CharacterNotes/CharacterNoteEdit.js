@@ -59,7 +59,7 @@ class CharacterNoteNew extends Component {
                 .then(resp => resp.json())
                 .then(data => {
                     console.log(data)
-                    this.props.editCharacterNote(cnId, data)
+                    this.props.editCharacterNote(id, cnId, data)
                     this.props.history.push('/games/'+this.state.gameName+'/characterNotebooks/'+this.state.characterName+'/notes/'+data.id.toString())
                 })
             }

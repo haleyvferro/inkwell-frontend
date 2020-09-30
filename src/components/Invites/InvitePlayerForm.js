@@ -16,7 +16,10 @@ class InvitePlayerForm extends Component {
     componentDidMount() {
         const path = this.props.location.pathname.split("/");
         const gameName = path[2]
+        debugger
         const game = this.props.auth.game_creations.find(game => game.game_name === gameName)
+        console.log(gameName)
+        console.log(game)
         if (game){
         this.setState({
             gameId: game.id,
@@ -25,9 +28,6 @@ class InvitePlayerForm extends Component {
         })}
     }
 
-    // findUser(userEmail){
-
-    // }
 
     submitHandler = (e) => {
         e.preventDefault()

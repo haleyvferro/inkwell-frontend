@@ -21,7 +21,7 @@ export default function auth(state=null, action){
             return state
 
         case 'NEW_GAME':
-            state.games.push(action.game)
+            state.game_creations.push(action.game)
             return state;
 
         case 'NEW_GAME_MASTER_NOTEBOOK':

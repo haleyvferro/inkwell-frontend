@@ -15,11 +15,9 @@ class InvitesContainer extends Component {
                     <InviteCard invite={invite}/>
                 ))
             }
-            else {
-                console.log('nothing here, bro, forreal')
+            else { return null
             }
-        } else {
-            console.log('nothing here, bro')
+        } else { return null
         }
     }
 
