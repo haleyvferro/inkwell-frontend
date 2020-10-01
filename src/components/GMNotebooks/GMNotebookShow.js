@@ -59,6 +59,7 @@ class GMNotebookShow extends Component {
           return(
             <div className="ui container">
           <h2>{gmNotebook.name}</h2>
+          <div class="ui divider"></div>
           <div className="ui doubling eight column grid">
               {this.renderGMNotes()}<br/><br/>
           </div>

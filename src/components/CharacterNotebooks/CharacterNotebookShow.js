@@ -49,6 +49,7 @@ class CharacterNotebookShow extends Component {
             <div className="ui container">
               <br/>
               <h2>{characterNotebook.name}</h2>
+              <div class="ui divider"></div>
               <div className="ui doubling eight column grid">
                   {this.renderCharacterNotes()}<br/><br/>
               </div>
@@ -61,7 +62,8 @@ class CharacterNotebookShow extends Component {
             <div class="ui container">
             <br/>
             <h2>{characterNotebook.name}</h2>
-          <div className="ui doubling eight column grid">
+            <div class="ui divider"></div>
+              <div className="ui doubling eight column grid">
                 {this.renderCharacterNotes()}<br/><br/>
             </div>
             <br/>

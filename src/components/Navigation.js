@@ -19,6 +19,7 @@ class Navigation extends React.Component {
         <div className="right menu">
           {
             this.props.auth ? 
+            // <p>Hello, {this.props.auth.}</p>
           <NavLink to='/login' className="item" onClick={this.handleLogout}>
             Logout
           </NavLink>

@@ -27,6 +27,7 @@ class Dashboard extends React.Component {
       fetch('http://localhost:4000/api/v1/current_user', reqObj)
       .then(resp => resp.json())
       .then(data => {
+        console.log(data)
         if (data.error){
           this.props.history.push('/login')
         } else {
@@ -38,6 +39,10 @@ class Dashboard extends React.Component {
   
   render(){
       // console.log(this.props.auth.)
+      if (!this.props.auth){ 
+        return(
+        <h2>loading...</h2>
+      )}
     return (
       <div className="ui container">
         <br/>
