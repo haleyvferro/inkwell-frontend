@@ -16,10 +16,7 @@ class InvitePlayerForm extends Component {
     componentDidMount() {
         const path = this.props.location.pathname.split("/");
         const gameName = path[2]
-        debugger
         const game = this.props.auth.game_creations.find(game => game.game_name === gameName)
-        console.log(gameName)
-        console.log(game)
         if (game){
         this.setState({
             gameId: game.id,
@@ -75,7 +72,9 @@ class InvitePlayerForm extends Component {
     render () {
       if (this.state.gameId){
         return (
-            <div>
+            <div class="ui container">
+              <br/>
+              <br/>
                 <form onSubmit={this.submitHandler} className="ui form">
         <h1>Invite Player</h1>
             email:
@@ -87,7 +86,7 @@ class InvitePlayerForm extends Component {
               value={this.state.userEmail}
             />
           <br/><br/>
-          <input type="submit" />
+          <input class="ui button" type="submit" />
         </form>
             </div>
         );} else { return null }

@@ -10,7 +10,7 @@ render () {
   const inviteGame = this.props.auth.games.find(game => game.id === invite.game_id)
   console.log(inviteGame)
   return (
-    <div className="ui item">
+    <div className="ui container">
       <div>
   You have been invited to play in {inviteGame.game_name}, <Link to={`games/${inviteGame.game_name}/invite/${invite.id}`}>click to See Game Description</Link>
       </div>

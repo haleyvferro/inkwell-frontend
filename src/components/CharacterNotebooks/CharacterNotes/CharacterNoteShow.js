@@ -55,20 +55,24 @@ class CharacterNoteShow extends Component {
     const currentUserId = this.props.auth.id
         if (note !==null && cnUserId === currentUserId) {
     return (
-        <div>
+        <div class='ui container'>
+          <br/>
             <h1>{note.c_note_title}</h1>
+            <div class="ui divider"></div>
             <p>{note.c_note_content}</p>
             <Link to={'/games/'+this.state.gameName+'/characterNotebooks/'+this.state.cnName+'/notes/'+this.state.note.c_note_id.toString()+'/edit'}>Edit</Link>
             <button onClick={() => this.handleDelete()}>Delete</button>
             <br/>
-            <Link to={'/games/'+this.state.gameName+'/characterNotebooks/'+this.state.cnName}>Back To Notebook</Link>
+            <Link class='ui button' to={'/games/'+this.state.gameName+'/characterNotebooks/'+this.state.cnName}>Back To Notebook</Link>
         </div>
     );} else if (note !==null && cnUserId !== currentUserId ) {
-        return (
-            <div>
+      return (
+        <div class='ui container'>
+        <br/>
             <h1>{note.c_note_title}</h1>
+            <div class="ui divider"></div>
             <p>{note.c_note_content}</p>
-            <Link to={'/games/'+this.state.gameName+'/characterNotebooks/'+this.state.cnName}>Back To Notebook</Link>
+            <Link class='ui button' to={'/games/'+this.state.gameName+'/characterNotebooks/'+this.state.cnName}>Back To Notebook</Link>
         </div>
         )
     }

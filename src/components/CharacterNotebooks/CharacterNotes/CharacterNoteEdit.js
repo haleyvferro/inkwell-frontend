@@ -71,9 +71,11 @@ class CharacterNoteNew extends Component {
             render () {
                 console.log(this.state.cnId)
                 return (
-                    <div>
+                    <div class="ui container">
+                        <br/>
                 <form onSubmit={this.submitHandler} className="ui form">
-        <h1>New Note</h1>
+        <h2>Edit Note</h2>
+        <div class="ui divider"></div>
             Title:
             <br/>
             <input
@@ -95,7 +97,7 @@ class CharacterNoteNew extends Component {
             rows="10"
           />
           <br/><br/>
-          <input type="submit" />
+          <input class="ui button" type="submit" />
         </form>
             </div>
         );

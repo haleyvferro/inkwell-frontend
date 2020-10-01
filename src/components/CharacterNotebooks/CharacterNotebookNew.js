@@ -66,8 +66,9 @@ class CharacterNotebookNew extends Component {
         if(this.state.gmId !== null){
         return (
             <div>
-                <form onSubmit={this.submitHandler} className="ui form">
-        <h1>Create your Character</h1>
+              <br/>
+                <form class="ui form" onSubmit={this.submitHandler} className="ui form">
+        <h2>Create your Character</h2>
             Name:
             <br/>
             <input
@@ -77,7 +78,7 @@ class CharacterNotebookNew extends Component {
               value={this.state.characterName}
             />
           <br/><br/>
-          <input type="submit" />
+          <input class="ui button" type="submit" />
         </form>
             </div>
         );} else {return null}

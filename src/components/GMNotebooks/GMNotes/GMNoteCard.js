@@ -7,10 +7,18 @@ class GMNoteCard extends Component {
 
 render () {
   return (
-    <div className="ui item">
-      <div>
+    <div className="column">
+    <div className="ui card">
+    <div className="ui container">
+      <br/>
+      <i class="huge file alternate icon"></i>
+      <br/>
+      <br/>
+      <h6>
           <Link to={'/games/'+this.props.gameName+'/gameMasterNotebook/'+this.props.gmNotebookName+'/notes/'+this.props.gmNote.id.toString()}>{this.props.gmNote.title}</Link>
-      </div>
+      </h6>
+    </div>
+    </div>
     </div>
   );
 };}

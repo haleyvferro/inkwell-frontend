@@ -12,7 +12,7 @@ class Navigation extends React.Component {
 
   render() {
     return (
-      <div className={`ui borderless inverted menu`}>
+      <div className={`ui borderless menu`}>
         <div className="ui inverted header item">
           <NavLink to='/dashboard'> Inkwell </NavLink>
         </div>

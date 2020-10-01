@@ -47,20 +47,28 @@ class GMNoteShow extends Component {
         const currentUserId = this.props.auth.id
             if (note!==null && gmnUserId === currentUserId) {
         return (
-            <div>
-                <h1>{note.title}</h1>
-                <p>{note.content}</p>
-                <Link to={'/games/'+this.state.gameName+'/gameMasterNotebook/'+this.state.gmnName+'/notes/'+this.state.note.id.toString()+'/edit'}>Edit</Link>
-                <button onClick={() => this.handleDelete()}>Delete</button>
+            <div class="ui container">
                 <br/>
-                <Link to={'/games/'+this.state.gameName+'/gameMasterNotebook/'+this.state.gmnName}>Back To Notebook</Link>
+                <h1>{note.title}</h1>
+                <div class="ui divider"></div>
+                <p>{note.content}</p>
+                <div class="ui divider"></div>
+                <Link class="ui button" to={'/games/'+this.state.gameName+'/gameMasterNotebook/'+this.state.gmnName+'/notes/'+this.state.note.id.toString()+'/edit'}>Edit</Link>
+                <button class="ui button" onClick={() => this.handleDelete()}>Delete</button>
+                <br/>
+                <br/>
+                <Link class="ui button" class="ui button" to={'/games/'+this.state.gameName+'/gameMasterNotebook/'+this.state.gmnName}>Back To Notebook</Link>
             </div>
         );} else if (note && gmnUserId !== currentUserId ) {
             return (
-                <div>
+                <div class="ui container">
+                <br/>
                 <h1>{note.title}</h1>
+                <div class="ui divider"></div>
                 <p>{note.content}</p>
-                <Link to={'/games/'+this.state.gameName+'/gameMasterNotebook/'+this.state.gmnName}>Back To Notebook</Link>
+                <div class="ui divider"></div>
+                <br/>
+                <Link class="ui button" to={'/games/'+this.state.gameName+'/gameMasterNotebook/'+this.state.gmnName}>Back To Notebook</Link>
             </div>
             )
         }

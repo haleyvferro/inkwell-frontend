@@ -39,11 +39,14 @@ class Dashboard extends React.Component {
   render(){
       // console.log(this.props.auth.)
     return (
-      <div className={null}>
-          <InvitesContainer />
-        <h1>buncha games I'm running</h1>
-          <GamesRunningContainer id={this.props.auth.id} />
-        <h1>buncha games I'm playing in</h1>
+      <div className="ui container">
+        <br/>
+          <InvitesContainer /><br/><br/>
+        <h1>Games Running</h1>
+        <div class="ui divider"></div>
+          <GamesRunningContainer id={this.props.auth.id} /><br/><br/><br/>
+        <h1>Games Playing</h1>
+        <div class="ui divider"></div>
           <GamesPlayingContainer id={this.props.auth.id} />
       </div>
   );}

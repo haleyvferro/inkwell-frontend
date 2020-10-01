@@ -45,17 +45,18 @@ class Login extends React.Component {
 
   render(){
     return (
-      <div>
-        <h3>Sign in</h3>
+      <div class="ui heading verticle container">
+        <br/>
+        <h2 class="ui dividing inverted header">Sign in</h2>
         {this.state.error ? <h6>{this.state.error}</h6> : null}
-        <form onSubmit={this.handleSubmit}>
-          <label>username:</label>
+        <form class="ui form" onSubmit={this.handleSubmit}>
+          <label>username:  </label><br/>
           <input name={'username'} onChange={this.handleInputChange} value={this.state.username} />
           <br/>
           <br/>
-          <label>password:</label>
-          <input name={'password'} onChange={this.handleInputChange} value={this.state.password} />
-          <input type='submit' value='login' />
+          <label>password:  </label><br/>
+          <input name={'password'} onChange={this.handleInputChange} value={this.state.password} /><br/><br/>
+          <input class="ui button" type='submit' value='login' />
         </form>
       </div>
     );

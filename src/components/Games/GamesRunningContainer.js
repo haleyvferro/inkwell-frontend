@@ -22,8 +22,8 @@ class GamesRunningContainer extends Component {
   return (
     <div>
         {/* <button as={Link} to={`/games`}>View All</button> */}
-        <div className="ui items">{this.renderGames()}</div><br/><br/>
-        <Link to={'/games/new'}>Create Game</Link>
+        <div className="ui doubling five column grid">{this.renderGames()}</div><br/><br/>
+        <Link class="ui button" to={'/games/new'}>Create Game</Link>
     </div>
   );}
 }

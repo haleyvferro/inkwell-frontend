@@ -61,22 +61,23 @@ class CharacterNotebooksContainer extends Component {
     if (this.props.gmId === this.props.auth.id)  {
       return (
         <div>
-            <h1>Character Notebooks</h1>
-            <div className="ui items">{this.renderCharacterNotebooks()}</div><br/><br/>
-            <Link to={'/games/'+this.props.gameName+'/invite'}>Invite Players</Link>
+            <h2>Character Notebooks</h2>
+            <div class="ui divider"></div>
+            <div className="ui doubling five column grid">{this.renderCharacterNotebooks()}</div><br/><br/>
+            <Link class="ui button" to={'/games/'+this.props.gameName+'/invite'}>Invite Players</Link>
         </div>
       );} else if (this.state.userIds.includes(this.state.currentUserId) && !this.state.existingCNBUsers.includes(this.state.currentUserId)){
        return ( <div>
-        <h1>Character Notebooks</h1>
-        <div className="ui items">{this.renderCharacterNotebooks()}</div><br/><br/>
-        <Link to={'/games/'+this.state.gameName+'/characterNotebooks/new'}>Create Your Character</Link>
+        <h2>Character Notebooks</h2>
+        <div className="ui doubling five column grid">{this.renderCharacterNotebooks()}</div><br/><br/>
+        <Link class="ui button" to={'/games/'+this.state.gameName+'/characterNotebooks/new'}>Create Your Character</Link>
         </div>)
       }
       else {
         return (
           <div>
-          <h1>Character Notebooks</h1>
-          <div className="ui items">{this.renderCharacterNotebooks()}</div>
+          <h2>Character Notebooks</h2>
+          <div className="ui doubling five column grid">{this.renderCharacterNotebooks()}</div>
       </div>
         )
       }

@@ -57,30 +57,34 @@ class GMNotebookShow extends Component {
         const currentUserId = this.props.auth.id
       if (gmNotebook && gmNotebook.user_id !== currentUserId ){
           return(
-            <div className="ui item">
-          <h1>{gmNotebook.name}</h1>
-          <div>
+            <div className="ui container">
+          <h2>{gmNotebook.name}</h2>
+          <div className="ui doubling eight column grid">
               {this.renderGMNotes()}<br/><br/>
-          <Link to={'/games/'+this.state.gameName}>View Game</Link>
           </div>
+          <br/>
+              <br/>
+          <Link class="ui button" to={'/games/'+this.state.gameName}>View Game</Link>
         </div>)
         } 
         else if (gmNotebook && gmNotebook.user_id === currentUserId){
           return (
-            <div className="ui item">
-              <h1>{gmNotebook.name}</h1>
-              <div>
+            <div className="ui container">
+              <h2>{gmNotebook.name}</h2>
+              <div class="ui divider"></div>
+              <div className="ui doubling eight column grid">
                   {this.renderGMNotes()}<br/><br/>
-                  <Link to={'/games/'+this.state.gameName+'/gameMasterNotebook/'+this.state.gmNotebook.name+'/notes/new'}>New Note</Link><br/>
-                  <Link to={'/games/'+this.state.gameName}>View Game</Link>
 
               </div>
+              <br/>
+              <br/>
+                  <Link class="ui button" to={'/games/'+this.state.gameName+'/gameMasterNotebook/'+this.state.gmNotebook.name+'/notes/new'}>New Note</Link>                  <Link class="ui button" to={'/games/'+this.state.gameName}>View Game</Link>
             </div>
           );
         }
         else if (this.state.gmId === currentUserId && gmNotebook === null){
           return (
-            <Link to={'/games/'+this.state.gameName+'/gameMasterNotebook/new'}>New Game Master Notebook</Link>
+            <Link class="ui button" to={'/games/'+this.state.gameName+'/gameMasterNotebook/new'}>New Game Master Notebook</Link>
             )
         }
         else {return null}

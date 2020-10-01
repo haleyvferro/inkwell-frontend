@@ -3,6 +3,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Navigation from './Navigation'
 import Login from './Login'
+// import Footer from './Footer'
 import Dashboard from './Dashboard'
 import GameShow from './Games/GameShow'
 import GameNew from './Games/GameNew'
@@ -21,7 +22,7 @@ import CharacterNoteEdit from './CharacterNotebooks/CharacterNotes/CharacterNote
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <Navigation />
       <Switch>
         <Route path='/dashboard' component={Dashboard}/>
@@ -55,6 +56,7 @@ function App() {
 
 
       </Switch>
+      {/* <Footer /> */}
     </div>
   );
 }

@@ -50,31 +50,31 @@ class GameNew extends Component {
 
   render () {
       return (
-          <div>
+          <div class="ui container">
+            <br/><br/>
             <form onSubmit={this.submitHandler} className="ui form">
-              <h1>New Game</h1>
-                  Game Name:
-                  <br/>
+              <h2 class="ui inverted header">New Game</h2>
+              <div class="ui divider"></div>
+                  <p>Game Name:</p>
                   <input
-                    placeholder="gameName"
+                    placeholder="Game Name"
                     name="gameName"
                     onChange={this.changeHandler}
                     value={this.state.gameName}
-                  />
+                    />
                   <br/><br/>
-                  Game Description: 
-                  <br/>
+                    <p>Game description:</p>
                   <textarea
                   label="game_description"
                   name="game_description"
-                  placeholder="game_description"
+                  placeholder="Game Description"
                   onChange={this.changeHandler}
                   value={this.state.game_description}
                   cols="50" 
                   rows="10"
                 />
                 <br/><br/>
-                <input type="submit" />
+                <input class="ui button" type="submit" />
             </form>
           </div>
       );

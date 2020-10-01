@@ -32,9 +32,15 @@ class GameShow extends Component {
       if (game) {
         return (
           // <div>'hi'</div>
-          <div className="ui item">
+          <div className="ui container">
+            <br/>
             <div>
-              <h1>{this.state.game.game_name}</h1>
+              <h1 class="ui inverted header">{this.state.game.game_name}</h1>
+              <div class="ui divider"></div>
+              <h5>{this.state.game.game_description}</h5>
+              <br/>
+              <br/>
+              <div class="ui divider"></div>
               <GMNotebookShow 
               gameName={this.state.game.game_name}
               gameId={this.state.game.id}
@@ -43,6 +49,9 @@ class GameShow extends Component {
               gmId={this.state.game.gm_id}
               /> 
             </div>
+            <br/>
+            <br/>
+            <br/>
             <div>
               <CharacterNotebooksContainer
               users={this.state.game.users}

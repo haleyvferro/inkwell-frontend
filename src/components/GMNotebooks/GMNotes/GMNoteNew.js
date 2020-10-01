@@ -62,9 +62,10 @@ class GMNoteNew extends Component {
     render () {
         console.log(this.state)
         return (
-            <div>
+            <div class="ui container">
                 <form onSubmit={this.submitHandler} className="ui form">
-        <h1>New Note</h1>
+        <h2 class='inverted header'>New Note</h2>
+        <div class='ui divider'></div>
             Title:
             <br/>
             <input
@@ -86,7 +87,7 @@ class GMNoteNew extends Component {
             rows="10"
           />
           <br/><br/>
-          <input type="submit" />
+          <input class='ui button' type="submit" />
         </form>
             </div>
         );

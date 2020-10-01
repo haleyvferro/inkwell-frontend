@@ -64,9 +64,9 @@ class CharacterNoteNew extends Component {
     render () {
         
         return (
-            <div>
+            <div class="ui container">
                 <form onSubmit={this.submitHandler} className="ui form">
-        <h1>New Note</h1>
+        <h2>New Note</h2>
             Title:
             <br/>
             <input
@@ -88,7 +88,7 @@ class CharacterNoteNew extends Component {
             rows="10"
           />
           <br/><br/>
-          <input type="submit" />
+          <input class="ui button" type="submit" />
         </form>
             </div>
         );

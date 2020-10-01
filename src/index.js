@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import './index.css';
+// import './App.css';
 // import 'semantic-ui-css/semantic.min.css';
 import App from './components/App';
 // import * as serviceWorker from './serviceWorker';
@@ -8,6 +8,9 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux'
 import { createStore } from 'redux';
 import mainReducer from './reducers/index'
+import "semantic-ui-css/semantic.min.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootswatch/dist/solar/bootstrap.min.css";
 
 
 

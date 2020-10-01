@@ -60,7 +60,7 @@ class GMNotebookNew extends Component {
     render () {
         console.log(this.state)
         return (
-            <div>
+            <div class="ui container">
                 <form onSubmit={this.submitHandler} className="ui form">
         <h1>Name your Game Master Notebook</h1>
             Title:

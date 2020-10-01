@@ -68,13 +68,15 @@ class InviteShow extends Component {
     }
 
     render () {
-      console.log(this.state)
         if (this.state.inviteId){
         return (
-            <div>
+            <div class="ui container">
+              <br/>
                 <h1>{this.state.game.game_name}</h1>
-                <p>{this.state.game.game_description}</p>
-                <button onClick={(e) => this.changeInvitePending(e)}>Accept</button> <button onClick={() => this.deleteGamePlayer()}>Decline</button>
+                <div class="ui divider"></div>
+                <h5>{this.state.game.game_description}</h5>
+                <br/>
+                <button class="ui button" onClick={(e) => this.changeInvitePending(e)}>Accept</button> <button class="ui button" onClick={() => this.deleteGamePlayer()}>Decline</button>
             </div>
         )} else { return null }
     }

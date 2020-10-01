@@ -29,7 +29,6 @@ class InvitesContainer extends Component {
     
         return (
             <div>
-                hi
                 {this.findInvites()}
             </div>
         )

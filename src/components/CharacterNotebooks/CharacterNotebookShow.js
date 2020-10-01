@@ -46,24 +46,26 @@ class CharacterNotebookShow extends Component {
         const currentUserId = this.props.auth.id
         if (characterNotebook && characterNotebook.user_id === currentUserId){
           return (
-            <div className="ui item">
-              <h1>{characterNotebook.name}</h1>
-              <div>
+            <div className="ui container">
+              <br/>
+              <h2>{characterNotebook.name}</h2>
+              <div className="ui doubling eight column grid">
                   {this.renderCharacterNotes()}<br/><br/>
-                  <Link to={'/games/'+this.state.gameName+'/characterNotebooks/'+this.state.characterNotebook.name+'/notes/new'}>New Note</Link>
-                  <Link to={'/games/'+this.state.gameName}>View Game</Link>
-
               </div>
+                  <Link class='ui button' to={'/games/'+this.state.gameName+'/characterNotebooks/'+this.state.characterNotebook.name+'/notes/new'}>New Note</Link>
+                  <Link class='ui button' to={'/games/'+this.state.gameName}>View Game</Link>
             </div>
           );
         } else if (characterNotebook && characterNotebook.user_id !== currentUserId ){
           return(
-          <div className="ui item">
-            <h1>{characterNotebook.name}</h1>
-            <div>
+            <div class="ui container">
+            <br/>
+            <h2>{characterNotebook.name}</h2>
+          <div className="ui doubling eight column grid">
                 {this.renderCharacterNotes()}<br/><br/>
-                <Link to={'/games/'+this.state.gameName}>View Game</Link>
             </div>
+            <br/>
+                <Link class='ui button' to={'/games/'+this.state.gameName}>View Game</Link>
           </div>)
         } else {return null}
     };
